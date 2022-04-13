@@ -1,0 +1,342 @@
+[20-Oct-2020 15:51:31 Asia/Tashkent] PHP Warning:  require(/home/greencen/public_html/vendor/composer/../symfony/polyfill-mbstring/bootstrap.php): failed to open stream: No such file or directory in /home/greencen/public_html/vendor/composer/autoload_real.php on line 66
+[20-Oct-2020 15:51:31 Asia/Tashkent] PHP Warning:  require(/home/greencen/public_html/vendor/composer/../symfony/polyfill-mbstring/bootstrap.php): failed to open stream: No such file or directory in /home/greencen/public_html/vendor/composer/autoload_real.php on line 66
+[20-Oct-2020 15:51:31 Asia/Tashkent] PHP Fatal error:  require(): Failed opening required '/home/greencen/public_html/vendor/composer/../symfony/polyfill-mbstring/bootstrap.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/greencen/public_html/vendor/composer/autoload_real.php on line 66
+[20-Oct-2020 16:56:51 Asia/Tashkent] PHP Warning:  require(/home/greencen/public_html/vendor/composer/../symfony/var-dumper/Resources/functions/dump.php): failed to open stream: No such file or directory in /home/greencen/public_html/vendor/composer/autoload_real.php on line 66
+[20-Oct-2020 16:56:51 Asia/Tashkent] PHP Warning:  require(/home/greencen/public_html/vendor/composer/../symfony/var-dumper/Resources/functions/dump.php): failed to open stream: No such file or directory in /home/greencen/public_html/vendor/composer/autoload_real.php on line 66
+[20-Oct-2020 16:56:51 Asia/Tashkent] PHP Fatal error:  require(): Failed opening required '/home/greencen/public_html/vendor/composer/../symfony/var-dumper/Resources/functions/dump.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/greencen/public_html/vendor/composer/autoload_real.php on line 66
+[29-Jan-2021 10:35:15 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:35:25 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:35:32 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:35:34 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:35:50 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:35:57 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:36:10 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:36:12 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:36:16 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:36:18 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:36:27 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:40 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:43 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:46 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:49 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:53 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:55 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:57 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:57 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:58 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:59 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:40:59 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:42:07 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:42:12 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:42:15 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:42:18 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:42:20 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:42:20 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:42:23 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:46:02 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:46:06 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:46:09 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:46:11 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:46:13 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:46:37 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:46:41 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:46:58 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:47:05 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:47:05 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:47:06 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:47:15 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
+[29-Jan-2021 10:47:26 Asia/Tashkent] PHP Fatal error:  Uncaught ReflectionException: Class view does not exist in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php:803
+Stack trace:
+#0 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): ReflectionClass->__construct('view')
+#1 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(681): Illuminate\Container\Container->build('view')
+#2 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(785): Illuminate\Container\Container->resolve('view', Array, true)
+#3 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(629): Illuminate\Foundation\Application->resolve('view', Array)
+#4 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(770): Illuminate\Container\Container->make('view', Array)
+#5 /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php(124 in /home/greencen/public_html/vendor/laravel/framework/src/Illuminate/Container/Container.php on line 805
