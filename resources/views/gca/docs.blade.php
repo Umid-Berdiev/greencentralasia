@@ -1,4 +1,4 @@
-@extends('gca.layout')
+@extends('gca.layouts.master')
 @section('content')
 <section class="inner_all">
   <div class="container">
@@ -12,10 +12,10 @@
               <embed src="{{ URL('storage/upload/'.$value->files) }}" width="320" height="300" />
             </a>
             @elseif($value->file_type=="doc"||$value->file_type=="docx")
-                <img src="{{URL('storage/images/word.jpeg')}}" alt=""  width="320" height="300">
+            <img src="{{URL('storage/images/word.jpeg')}}" alt="" width="320" height="300">
             @else
-              <img src="{{URL('storage/images/ppt.png')}}" alt=""  width="320" height="300">
-            @endif  
+            <img src="{{URL('storage/images/ppt.png')}}" alt="" width="320" height="300">
+            @endif
           </div>
           <div class="item_documents_right">
             <a href="{{URL(App::getLocale().'/doc/'.$value->doc_category_id.'/'.$value->group)}}">{{$value->title}}</a>

@@ -1,16 +1,13 @@
-@extends('gca.layout')
+@extends('gca.layouts.master')
 @section('content')
 {{--@section('main_top_layout')--}}
-{{--    <section class="main_top_layout" style="background-image: url({{asset('gca/images/main.jpg')}});">--}}
-{{--        <div class="container">--}}
-{{--            <h2>--}}
-{{--                <span>News & Articles</span>--}}
-{{--            </h2>--}}
-{{--        </div>--}}
-{{--    </section--}}
-{{--@endsection--}}
-
-<section class="inner_all">
+{{-- <section class="main_top_layout" style="background-image: url({{asset('gca/images/main.jpg')}});">--}}
+  {{-- <div class="container">--}}
+    {{-- <h2>--}}
+      {{-- <span>News & Articles</span>--}}
+      {{-- </h2>--}}
+    {{-- </div>--}}
+  {{-- </section--}} {{--@endsection--}} <section class="inner_all">
   {{-- @dd($event) --}}
   <div class="container">
     <div class="bar_inner">
@@ -31,7 +28,7 @@
           <a href="{{ url(app()->getLocale() . '/event?id=' . $item->id) }}" class="news_item">
             <img src="{{ asset('storage/events/' . $item->cover) }}" alt="Event cover image">
             <div>
-             {{-- < span>{{ $item->datestart->format('d.m.Y') }} - --}}
+              {{-- < span>{{ $item->datestart->format('d.m.Y') }} - --}}
                 {{ $item->dateend->format('d.m.Y') }}</>
               <p>{{ $item->title }}</p>
             </div>

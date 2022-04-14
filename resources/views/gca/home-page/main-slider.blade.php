@@ -1,3 +1,8 @@
+@push('custom-css')
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet" href="{{ asset('project_gca/css/swiper.min.css') }}" />
+@endpush
+
 <section class="main-slider">
   <div class="main-swiper-container swiper-container">
     <div class="swiper-wrapper">
@@ -33,6 +38,5 @@
       delay: 3000,
     },
   });
-
 </script>
 @endpush

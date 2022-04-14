@@ -29,10 +29,6 @@ class AppServiceProvider extends ServiceProvider
   {
     Paginator::useBootstrap();
 
-    View::composer('gca.blocks.menu', function ($view) {
-      $view->with('menu', MenuMaker::where('language_id', current_language()->id)->orderBy('orders')->get());
-    });
-
     View::composer(['gca.*', 'admin.*'], function ($view) {
       $view->with('languages', Language::query());
     });

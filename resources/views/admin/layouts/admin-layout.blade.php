@@ -526,6 +526,8 @@
     };
     tinymce.init(editor_config);
   </script>
+
+  @stack('custom-scripts')
 </body>
 
 </html>

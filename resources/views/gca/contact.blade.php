@@ -1,4 +1,5 @@
-@extends('gca.layout')
+@extends('gca.layouts.master')
+
 @section('content')
 @section('main_top_layout')
 <section class="main_top_layout" style="background-image: url({{ asset('gca/images/main.jpg') }});">
@@ -98,38 +99,14 @@
     </form>
   </div>
 </section>
-{{-- <script type="text/javascript" charset="utf-8" async
-  src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A458036ea9a31a6999429075e1efd9d7f6ebd5b2b42325b43324932b42c5889b5&amp;width=600&amp;height=450&amp;lang=ru_RU&amp;scroll=true">
-</script> --}}{{-- <script src="https://api-maps.yandex.ru/2.1/?apikey=318a59ea-1b14-4af4-b521-d9e6f0fecf2f&lang=ru_RU"
-  type="text/javascript"></script> --}}
-{{-- <script type="text/javascript">
-  --}}
-{{-- // Функция ymaps.ready() будет вызвана, когда --}}
-{{-- // загрузятся все компоненты API, а также когда будет готово DOM-дерево. --}}
-{{-- ymaps.ready(init); --}}
-{{-- function init(){ --}}
-{{-- // Создание карты. --}}
-{{-- var myMap = new ymaps.Map("map", { --}}
-{{-- // Координаты центра карты. --}}
-{{-- // Порядок по умолчанию: «широта, долгота». --}}
-{{-- // Чтобы не определять координаты центра карты вручную, --}}
-{{-- // воспользуйтесь инструментом Определение координат. --}}
-{{-- center: [55.76, 37.64], --}}
-{{-- // Уровень масштабирования. Допустимые значения: --}}
-{{-- // от 0 (весь мир) до 19. --}}
-{{-- zoom: 12 --}}
-{{-- }); --}}
-{{-- } --}}
-{{--
-</script> --}}
+
 @endsection
 @push('scripts')
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <script>
   function enable() {
-        var btn = document.getElementById('btn')
-
-        btn.disabled = false;
-    }
-
+    var btn = document.getElementById('btn')
+    btn.disabled = false;
+  }
 </script>
 @endpush

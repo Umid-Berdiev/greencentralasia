@@ -1,5 +1,4 @@
 <div class="hdr_top">
-
   <div class="container">
     <div class="hdr_top_main">
       <div class="phone_top right_border">

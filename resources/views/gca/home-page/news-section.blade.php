@@ -19,17 +19,20 @@
     </div>
   </div>
 </section>
+
 @push('scripts')
-<script>
-  const cards = document.getElementsByClassName('auto-height');
-  let max = 0
+{{-- <script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const cards = document.getElementsByClassName('auto-height');
+    let max = 0;
 
-  cards.forEach(card => {
-    if (max < card.clientHeight)
-      max = card.clientHeight
+    cards.forEach(card => {
+      if (max < card.clientHeight)
+        max = card.clientHeight
 
-    card.style.height = max + "px";
+      card.style.height = max + "px";
+    });
   });
 
-</script>
+</script> --}}
 @endpush

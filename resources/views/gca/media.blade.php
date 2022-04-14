@@ -1,4 +1,4 @@
-@extends('gca.layout')
+@extends('gca.layouts.master')
 
 @section('content')
 

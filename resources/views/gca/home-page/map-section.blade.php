@@ -1,6 +1,6 @@
 <section class="map_section">
   <div class="container">
-    <div class="row" id="apps" v-cloak>
+    <div class="row" id="map-section" v-cloak>
       <div class="col-md-6" v-if="gca" style="min-height: 60vh">
         <span v-if="news && news.length > 0" class="template_span">@lang('blog.news_events')</span>
         <div style="padding: 15px 30px;margin-bottom:0;" class="new_event" v-for="item in news">
@@ -73,11 +73,17 @@
 </section>
 
 @push('scripts')
+<script src="{{ asset('project_gca/js/vue.js') }}"></script>
+<script src="{{ asset('project_gca/js/axios.min.js') }}"></script>
+<script src="{{ asset('amcharts4/core.js') }}"></script>
+<script src="{{ asset('amcharts4/maps.js') }}"></script>
+<script src="{{ asset('amcharts4/geodata/worldLow.js') }}"></script>
+<script src="{{ asset('amcharts4/themes/animated.js') }}"></script>
 
 <script>
-  var a=0;
+  var a = 0;
   let app = new Vue({
-    el: "#apps",
+    el: "#map-section",
 
     data: {
       gca: '',
@@ -180,6 +186,6 @@
       this.init();
       this.getGcaInfo("UZ");
     }
-  })
+  });
 </script>
 @endpush

@@ -25,7 +25,7 @@ class FormController extends Controller
    */
   public function index()
   {
-    $lang_id = $this->getLang();
+    $lang_id = current_language()->id;
     $events = DB::table("events")
       ->select(['events.*', 'languages.language_name', 'eventcategories.category_name'])
       ->leftJoin("languages", "languages.id", "=", "events.language_id")
@@ -79,7 +79,6 @@ class FormController extends Controller
 
   public function ContactSearch(Request $request)
   {
-
     $validator = Validator::make($request->all(), [
       'search' => 'required'
     ]);
@@ -101,6 +100,7 @@ class FormController extends Controller
     $cvs = CvForm::orderBy('id', 'desc')->paginate(15);
     return view('admin.cv')->with('cvs', $cvs);
   }
+
   public  function indexCVedit($id)
   {
     $cv = CvForm::where('id', '=', $id)->first();
@@ -119,6 +119,7 @@ class FormController extends Controller
 
     return redirect()->back();
   }
+
   public function CvSearch(Request $request)
   {
     $validator = Validator::make($request->all(), [
@@ -136,17 +137,20 @@ class FormController extends Controller
     } else
       return redirect()->back()->with('cvs', $cvs);
   }
+
   public function indexMurojat()
   {
     $objects = ObjectSend::orderBy('id', 'desc')->paginate(10);
 
     return view('admin.murojat')->with('objects', $objects);
   }
+
   public function Murojat_edit($id)
   {
     $object = ObjectSend::find($id);
     return view('admin.murojat_edit')->with('object', $object);
   }
+
   public function murojat_update(Request $request)
   {
     $object = ObjectSend::find($request->id);
@@ -155,10 +159,9 @@ class FormController extends Controller
 
     MailController::send($object->unique_number, '', $object->status, 'murojaat@minwater.uz', $object->email, 'murojat_re');
 
-
-
     return redirect()->back();
   }
+
   public function murojatSearch(Request $request)
   {
     $validator = Validator::make($request->all(), [
@@ -194,7 +197,7 @@ class FormController extends Controller
 
   public function  contact()
   {
-    $lang_id = $this->getLang();
+    $lang_id = current_language()->id;
     $events = DB::table("events")
       ->select(['events.*', 'languages.language_name', 'eventcategories.category_name'])
       ->leftJoin("languages", "languages.id", "=", "events.language_id")
@@ -218,6 +221,7 @@ class FormController extends Controller
       'comment' => 'required',
       'g-recaptcha-response' => new Captcha(),
     ]);
+
     if ($validator->fails()) {
       return back()
         ->withErrors($validator)
@@ -237,8 +241,6 @@ class FormController extends Controller
       return redirect()->back()->with('message', 'Ваше обращение принято');
     }
   }
-
-
 
   /**
    * Store a newly created resource in storage.

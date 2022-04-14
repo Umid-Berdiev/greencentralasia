@@ -9,16 +9,16 @@
       <div class="swiper-slide mx-3" data-fancybox=":gallery"
         data-src="{{ asset('storage/statistics/' . $item->photo_url) }}">
         <a href="#" class="report_main_item">
-          <div >
-            <img src="{{URL('\storage/statistics/'.$item->photo_url)}}" alt="stat1 image"
-             width="400" height="300">
+          <div>
+            <img src="{{URL('storage/statistics/'.$item->photo_url)}}" alt="stat1 image" width="400" height="300">
           </div>
-          <p style="width:400px;"  >{{ $item->name }}</p>
+          <p style="width:400px;">{{ $item->name }}</p>
         </a>
       </div>
       @endforeach
     </div>
-    
-    <div class="swiper-pagination "></div>
+    @if (count($statisticas))
+    <div class="swiper-pagination"></div>
+    @endif
   </div>
 </section>

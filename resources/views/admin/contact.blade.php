@@ -2,7 +2,7 @@
 
 @section("content")
 
-<div class="col-md-12" style="background-color: white;padding: 25px;" id="app">
+<div class="col-md-12" style="background-color: white;padding: 25px;" id="contact">
   <div class="col-md-12">
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -72,32 +72,34 @@
     {{ $contacts->links() }}
   </div>
 </div>
-<script>
-  var app = new Vue({
-		el: '#app',
-		data: {
-			checkedIds: [],
-			contactIds: []
-		},
-		computed: {
-			mainCheckbox: {
-				get() {
-					return this.checkedIds.length != 0 && this.contactIds != 0 ? this.checkedIds.length == this.contactIds.length : false;
-				},
-				set(value) {
-					if (value) this.checkedIds = this.contactIds;
-				}
-			},
-		},
-		methods: {
-			checkAll () {
-				this.mainCheckbox != true ? this.checkedIds = this.contactIds : this.checkedIds = [];
-			}
-		},
-		mounted () {
-			this.contactIds = @json($contacts->pluck('id'));
-		}
-})
-</script>
-
 @endsection
+
+@push('custom-scripts')
+<script>
+  const contactInstance = new Vue({
+    el: '#contact',
+    data: {
+      checkedIds: [],
+      contactIds: []
+    },
+    computed: {
+      mainCheckbox: {
+        get() {
+          return this.checkedIds.length != 0 && this.contactIds != 0 ? this.checkedIds.length == this.contactIds.length : false;
+        },
+        set(value) {
+          if (value) this.checkedIds = this.contactIds;
+        }
+      },
+    },
+    methods: {
+      checkAll () {
+        this.mainCheckbox != true ? this.checkedIds = this.contactIds : this.checkedIds = [];
+      }
+    },
+    mounted () {
+      this.contactIds = @json($contacts->pluck('id'));
+    }
+  });
+</script>
+@endpush

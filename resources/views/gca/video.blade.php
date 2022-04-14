@@ -1,4 +1,4 @@
-@extends('gca.layout')
+@extends('gca.layouts.master')
 @section('content')
 @section('main_top_layout')
 <section class="main_top_layout" style="background-image: url({{asset('gca/images/main.jpg')}});">

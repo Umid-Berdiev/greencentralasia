@@ -30,23 +30,11 @@ class FrontController extends Controller
       }
     }
 
-    $statisticas = Statistics::where('photo_url', '<>', '')->where("language_id", "=", $lang_id)->orderBy('id', 'desc')->take(10)->get();
-
-    // $events = DB::table("events")
-    //   ->select(['events.*', 'languages.language_name', 'eventcategories.category_name'])
-    //   ->leftJoin("languages", "languages.id", "=", "events.language_id")
-    //   ->leftJoin("eventcategories", "eventcategories.group", "=", "events.event_category_id")
-    //   ->where('events.title', '<>', '')
-    //   ->where("events.language_id", "=", $lang_id)
-    //   ->where("eventcategories.language_id", "=", $lang_id)->take(5)
-    //   ->orderBy('id', 'desc')->where('title', '<>', '')
-    //   ->orderBy('id', 'desc')->take(2)
-    //   ->get();
+    $statisticas = Statistics::where('photo_url', '<>', '')->where("language_id", $lang_id)->orderBy('id', 'desc')->take(10)->get();
 
     $events = Event::where('language_id', $lang_id)
       ->whereDate('dateend', '>=', now())
       ->with('category')
-      // ->with('language')
       ->latest()
       ->take(3)
       ->get();
