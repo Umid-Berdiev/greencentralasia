@@ -11,8 +11,3 @@
 @include('gca.home-page.map-section')
 @include('gca.home-page.media-section')
 @endsection
-
-@push('scripts')
-<script src="{{ asset('project_gca/js/swiper.min.js') }}"></script>
-<script src="{{ asset('project_gca/js/main.js') }}"></script>
-@endpush

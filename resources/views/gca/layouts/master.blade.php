@@ -37,6 +37,8 @@
   <script src="{{ asset('project_gca/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('project_gca/js/jquery.fancybox.min.js') }}"></script>
   {{-- <script src="https://unpkg.com/swiper/swiper-bundle.js"></script> --}}
+  <script src="{{ asset('project_gca/js/swiper.min.js') }}"></script>
+  <script src="{{ asset('project_gca/js/main.js') }}"></script>
 
   @stack('scripts')
 </body>
