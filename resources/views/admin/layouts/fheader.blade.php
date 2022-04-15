@@ -4,7 +4,7 @@
       <div class="col-lg-2">
         <div class="logo">
           <a href="{{ URL('/') }}">
-            <img class="img-fluid" src="{{ URL::asset(" frondend/img/logo/black.png") }}" alt="">
+            <img class="img-fluid" src="{{ URL::asset('frondend/img/logo/black.png') }}" alt="">
           </a>
         </div>
       </div>

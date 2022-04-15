@@ -13,16 +13,10 @@
 
   <!-- BEGIN STYLESHEETS -->
 
-  <link rel="stylesheet" href="{{ URL::asset(" frondend/css/font-awesome.min.css") }}">
-
-  <link rel="stylesheet" href="{{ URL::asset(" frondend/plugins/owl/owl.carousel.min.css") }}">
-
-  <link rel="stylesheet" href="{{ URL::asset(" frondend/css/bootstrap.min.css") }}">
-  <link rel="stylesheet" href="{{ URL::asset(" frondend/css/style.css")}}">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
-
-
+  <link rel="stylesheet" href="{{ URL::asset('frondend/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('frondend/plugins/owl/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('frondend/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('frondend/css/style.css') }}">
 
 </head>
 
@@ -115,18 +109,18 @@
     @include("admin.layouts.ffooter")
   </div>
 
-  <script src="{{ URL::asset(" frondend/js/jquery-2.2.3.min.js") }}"></script>
-  <script src="{{ URL::asset(" frondend/qrcode.js") }}"></script>
-  <script src='{{ URL::asset("frondend/libs/bootstrap.min.js") }}'></script>
+  <script src="{{ URL::asset('frondend/js/jquery-2.2.3.min.js') }}"></script>
+  <script src="{{ URL::asset('frondend/qrcode.js') }}"></script>
+  <script src="{{ URL::asset('frondend/libs/bootstrap.min.js') }}"></script>
 
-  <script src='{{ URL::asset("frondend/plugins/owl/owl.carousel.min.js") }}'></script>
+  <script src="{{ URL::asset('frondend/plugins/owl/owl.carousel.min.js') }}"></script>
 
-  <script src="{{ URL::asset(" frondend/js/common.js") }}"></script>
+  <script src="{{ URL::asset('frondend/js/common.js') }}"></script>
 
-  <script src="{{ URL::asset(" frondend/js/general.js") }}"></script>
+  <script src="{{ URL::asset('frondend/js/general.js') }}"></script>
 
   @section("script")
-  @show
+  @endsection
 
 </body>
 
