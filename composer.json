@@ -9,6 +9,7 @@
   "license": "MIT",
   "require": {
     "php": "^7.3|^8.0",
+    "barryvdh/laravel-dompdf": "^1.0",
     "fruitcake/laravel-cors": "^2.0",
     "google/recaptcha": "^1.2",
     "guzzlehttp/guzzle": "^7.0.1",
@@ -17,7 +18,9 @@
     "laravel/helpers": "^1.5",
     "laravel/sanctum": "^2.11",
     "laravel/tinker": "^2.5",
-    "pragmarx/tracker": "^4.0"
+    "phpoffice/phpword": "^0.18.3",
+    "pragmarx/tracker": "^4.0",
+    "unisharp/laravel-filemanager": "^2.4"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.6",

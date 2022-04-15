@@ -1,4 +1,5 @@
 @extends('gca.layouts.master')
+
 @section('content')
 <section class="inner_all">
   <div class="container">

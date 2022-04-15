@@ -1,7 +1,7 @@
 @extends('gca.layouts.master')
 @section('content')
 @section('main_top_layout')
-<section class="main_top_layout" style="background-image: url({{ asset('gca/images/main.jpg') }});">
+<section class="main_top_layout" style="background-image: url({{ asset('project_gca/images/main.jpg') }});">
   <div class="container">
     <h2>
       <span>@lang('blog.video')</span>

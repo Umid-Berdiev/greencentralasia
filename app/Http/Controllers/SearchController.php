@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Language;
 use App\Models\Sorovvote;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,7 +24,7 @@ class SearchController extends Controller
       ->where("events.language_id", $lang_id)
       ->where("eventcategories.language_id", $lang_id)->take(5)->get();
     $tenders = Tender::take(3)->where('language_id', $lang_id)->get();
-    $search = $request->input("search");
+    $search = $request->search;
     $posts = DB::select("select * from `posts` where `language_id` = '$lang_id' and `title` LIKE '%$search%' ");
     $page = DB::select("select * from `pages` where `language_id` = '$lang_id' and `title` LIKE '%$search%' ");
     $doc = DB::select("select * from `docs` where `language_id` = $lang_id and `title` LIKE '%$search%' ");
@@ -42,8 +41,10 @@ class SearchController extends Controller
       ->with('tenders', $tenders);
   }
 
-  public function allin($lang_id, $name_tip, $category_id, Request $request)
+  public function allin($locale, $name_tip, $category_id, Request $request)
   {
+    // dd($lang_id, $name_tip, $category_id, $request->all());
+    $lang_id = current_language()->id;
     $model = "";
     $tenders = Tender::take(3)->where('title', '<>', '')->where('language_id', $lang_id)->orderBy('id', 'desc')->get();
     $events = DB::table("events")
@@ -57,15 +58,17 @@ class SearchController extends Controller
     switch ($name_tip) {
       case "doc":
         $model = DB::table("docs")
-          ->select(['docs.*', 'languages.language_name', 'doccategories.category_name'])
-          ->leftJoin("languages", "languages.id", "=", "docs.language_id")
+          ->select(['docs.*', 'doccategories.category_name'])
+          // ->leftJoin("languages", "languages.id", "=", "docs.language_id")
           ->leftJoin("doccategories", "doccategories.group", "=", "docs.doc_category_id")
-          ->where('docs.title', '<>', '')
+          // ->where('docs.title', '<>', '')
           ->where("docs.language_id", $lang_id)
           ->where("docs.doc_category_id", "=", $category_id)
-          ->where("doccategories.language_id", $lang_id)
-          ->orderBy('id', 'desc')
+          // ->where("doccategories.language_id", $lang_id)
+          ->orderBy('docs.id', 'desc')
           ->paginate(10);
+
+        // dd('model', $model);
 
         $category = DB::table("doccategories")
           ->select(['doccategories.*', 'languages.language_name'])
@@ -100,12 +103,12 @@ class SearchController extends Controller
             ->paginate(10);
         } else {
           $model = DB::table("events")
-            ->select(['events.*', 'languages.language_name', 'eventcategories.category_name'])
+            // ->select(['events.*', 'languages.language_name', 'eventcategories.category_name'])
             ->leftJoin("languages", "languages.id", "=", "events.language_id")
             ->leftJoin("eventcategories", "eventcategories.group", "=", "events.event_category_id")
             ->where('events.title', '<>', '')
             ->where("events.language_id", $lang_id)
-            ->where("events.event_category_id", "=", $category_id)
+            // ->where("events.event_category_id", "=", $category_id)
             ->where("eventcategories.language_id", $lang_id)
             ->orderBy('id', 'desc')
             ->paginate(10);
@@ -218,8 +221,9 @@ class SearchController extends Controller
     }
   }
 
-  public function allinin($lang_id, $name_tip, $category_id, $id)
+  public function allinin($locale, $name_tip, $category_id, $id)
   {
+    $lang_id = current_language()->id;
     $model = "";
     $tenders = Tender::take(3)->where('language_id', $lang_id)->get();
     $events = DB::table("events")
@@ -396,8 +400,8 @@ class SearchController extends Controller
   public function download(Request $request)
   {
     // dd($request->all());
-    $type = $request->input("type");
-    $id = $request->input("id");
+    $type = $request->type;
+    $id = $request->id;
     //PDF file is stored under project/public/download/info.
 
     switch ($type) {
@@ -494,7 +498,7 @@ class SearchController extends Controller
       ->leftJoin("eventcategories", "eventcategories.group", "=", "events.event_category_id")
       ->where("events.language_id", $lang_id)
       ->where("eventcategories.language_id", $lang_id)->take(5)->get();
-    if ($request->has('start') && $request->has('finish') && $request->input('status') == 0) {
+    if ($request->has('start') && $request->has('finish') && $request->status == 0) {
       $model = DB::table("tenders")
         ->select(['tenders.*', 'languages.language_name', 'tendercategories.category_name'])
         ->leftJoin("languages", "languages.id", "=", "tenders.language_id")
@@ -507,7 +511,7 @@ class SearchController extends Controller
         ->where("tendercategories.language_id", $lang_id)
         ->orderBy('id', 'desc')
         ->paginate(10);
-    } elseif ($request->has('start') && $request->has('finish') && $request->input('status') == 1) {
+    } elseif ($request->has('start') && $request->has('finish') && $request->status == 1) {
       $model = DB::table("tenders")
         ->select(['tenders.*', 'languages.language_name', 'tendercategories.category_name'])
         ->leftJoin("languages", "languages.id", "=", "tenders.language_id")
@@ -521,7 +525,7 @@ class SearchController extends Controller
         ->orderBy('id', 'desc')
         ->paginate(10);
     }
-    if ($request->input('status') == 0) {
+    if ($request->status == 0) {
       $model = DB::table("tenders")
         ->select(['tenders.*', 'languages.language_name', 'tendercategories.category_name'])
         ->leftJoin("languages", "languages.id", "=", "tenders.language_id")
