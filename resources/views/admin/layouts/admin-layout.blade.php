@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>GCA admin portal</title>
+  <title>GCA Admin Portal</title>
 
   <!-- BEGIN META -->
   <meta charset="utf-8">
@@ -13,8 +13,9 @@
   <!-- END META -->
 
   <!-- BEGIN STYLESHEETS -->
-  <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet'
-    type='text/css' />
+  {{--
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet'
+    type='text/css' /> --}}
   <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/theme-default/bootstrap.css?1422792965') }}" />
   <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/theme-default/materialadmin.css?1425466319') }}" />
   <link type="text/css" rel="stylesheet"
