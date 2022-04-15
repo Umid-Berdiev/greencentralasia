@@ -92,17 +92,20 @@ class LinksController extends Controller
 
     foreach ($request->language_ids as $key => $value) {
       $model = new Links();
+
       if (isset($request->title[$key]))
         $model->title = $request->title[$key];
       else
         $model->title = "";
+
       $model->category_group = $request->links_category_id;
       $model->group = $grp_id;
       $model->language_id = $value;
       $model->link = $request->link;
 
       if ($request->hasFile('cover')) {
-        $model->photo_url =  Storage::putFileAs('public', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+        $file_name = 'link_' . time();
+        $model->photo_url =  Storage::putFileAs('public', $request->file('cover'), $file_name);
       }
 
       $model->save();
@@ -231,8 +234,9 @@ class LinksController extends Controller
       $model->language_id = $value;
 
       if ($request->hasFile('cover')) {
-        $model->photo_url =  $request->file('cover')->getClientOriginalName();
-        Storage::putFileAs('public', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+        $file_name = 'link_' . time();
+        $model->photo_url =  $file_name;
+        Storage::putFileAs('public', $request->file('cover'), $file_name);
       }
 
       if ($request->remove_cover == "on") {

@@ -62,10 +62,10 @@ class DocumentController extends Controller
     foreach ($request->language_ids as $key => $value) {
       if ($request->file("files")) {
         $file = $request->file("files")[$key];
-        $file_name = $file->getClientOriginalName();
+        $file_name = 'doc_' . time();
         Storage::putFileAs('public/upload/', $file, $file_name);
-        //$file_type= $file->clientExtension();
         $file_type = $file->extension();
+
         /* SCREENSHOT OF FIRST PAGE OF DOCUMENT*/
         //Supported formats:doc,docx,pdf,ppt,pptx
         if (!($file_type == 'doc' || $file_type == 'docx' || $file_type == 'pdf' || $file_type == 'ppt' || $file_type == 'pptx')) {
@@ -74,9 +74,7 @@ class DocumentController extends Controller
         }
       }
 
-      //   dd(Document::first());
-
-      $data = [
+      Document::create([
         'title' => $request->titles[$key],
         'description' => $request->descriptions[$key],
         'link' => $request->links,
@@ -88,11 +86,7 @@ class DocumentController extends Controller
         'files' => $file_name,
         'file_type' => $file->clientExtension(),
         'file_size' => $file->getClientSize()
-      ];
-
-      //   dd($data);
-
-      $model = Document::create($data);
+      ]);
     }
 
     return redirect(route('documents.edit', $grp_id))->with('success', 'Created!');
@@ -146,7 +140,7 @@ class DocumentController extends Controller
 
       if (isset($request->file("files")[$key])) {
         $file = $request->file("files")[$key];
-        $file_name = $file->getClientOriginalName();
+        $file_name = 'doc_' . time();
 
         Storage::putFileAs('public/upload', $file, $file_name);
         $file_type = $file->clientExtension();

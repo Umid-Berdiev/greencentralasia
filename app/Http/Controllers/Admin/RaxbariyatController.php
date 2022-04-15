@@ -84,7 +84,8 @@ class RaxbariyatController extends Controller
       $raxbariyat->tel = $request->tel;
       $raxbariyat->faks = $request->faks;
       $raxbariyat->email = $request->email;
-      $raxbariyat->photo_url =  Storage::putFileAs('public', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+      $file_name = 'raxbariyat_' . time();
+      $raxbariyat->photo_url =  Storage::putFileAs('public', $request->file('cover'), $file_name);
       $raxbariyat->group = $grp_id;
       $raxbariyat->language_id = $value;
 
@@ -176,8 +177,10 @@ class RaxbariyatController extends Controller
       $raxbariyat->tel = $request->tel;
       $raxbariyat->faks = $request->faks;
       $raxbariyat->email = $request->email;
-      if ($request->hasFile('cover'))
-        $raxbariyat->photo_url =  Storage::putFileAs('public', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+      if ($request->hasFile('cover')) {
+        $file_name = 'raxbariyat_' . time();
+        $raxbariyat->photo_url =  Storage::putFileAs('public', $request->file('cover'), $file_name);
+      }
 
       $raxbariyat->language_id = $value;
 

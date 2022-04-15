@@ -83,8 +83,9 @@ class PhotoController extends Controller
       $model->language_id = $value;
 
       if ($request->hasFile("cover")) {
-        $model->cover = $request->file('cover')->getClientOriginalName();
-        Storage::putFileAs('public/photos', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+        $file_name = 'photo_' . time();
+        $model->cover = $file_name;
+        Storage::putFileAs('public/photos', $request->file('cover'), $file_name);
       }
 
       $model->save();
@@ -131,8 +132,9 @@ class PhotoController extends Controller
       $model->language_id = $value;
 
       if ($request->hasFile("cover")) {
-        $model->cover = $request->file('cover')->getClientOriginalName();
-        Storage::putFileAs('public/photos', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+        $file_name = 'photo_' . time();
+        $model->cover = $file_name;
+        Storage::putFileAs('public/photos', $request->file('cover'), $file_name);
       } else {
         $model->cover = "null";
       }

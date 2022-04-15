@@ -149,7 +149,8 @@ class TenderController extends Controller
       $model->language_id = $value;
 
       if ($request->hasFile("cover")) {
-        $model->photo_url = Storage::putFileAs('public', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+        $file_name = 'tender_' . time();
+        $model->photo_url = Storage::putFileAs('public', $request->file('cover'), $file_name);
       }
 
       $model->update();

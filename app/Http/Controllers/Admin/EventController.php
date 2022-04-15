@@ -80,10 +80,13 @@ class EventController extends Controller
     }
 
     $grp_id = $this->getGroupId();
+
     if ($request->hasFile('cover')) {
-      $cover = $request->file('cover')->getClientOriginalName();
-      Storage::putFileAs('public/events', $request->file('cover'), $cover);
+      $file_name = 'event_' . time();
+
+      Storage::putFileAs('public/events', $request->file('cover'), $file_name);
     }
+
     foreach ($request->language_ids as $key => $value) {
       $model = Event::create([
         'title' => $request->titles[$key],
@@ -95,7 +98,7 @@ class EventController extends Controller
         'event_category_id' => $request->category_id,
         'group' => $grp_id,
         'language_id' => $value,
-        'cover' => $cover
+        'cover' => $file_name
       ]);
     }
 
@@ -151,8 +154,9 @@ class EventController extends Controller
       ]);
 
       if ($request->hasFile("cover")) {
-        $model->update(['cover' => $request->file('cover')->getClientOriginalName()]);
-        Storage::putFileAs('public/events', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+        $file_name = 'event_' . time();
+        $model->update(['cover' => $file_name]);
+        Storage::putFileAs('public/events', $request->file('cover'), $file_name);
       }
 
       if ($request->remove_cover == "on") {

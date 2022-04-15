@@ -65,8 +65,9 @@ class PageController extends Controller
              $page_group->photo_url = $name;*/
 
     if ($request->hasFile('photos')) {
-      $page_group->photo_url = $request->file('photos')->getClientOriginalName();
-      Storage::putFileAs('public/pages', $request->file('photos'), $request->file('photos')->getClientOriginalName());
+      $file_name = 'page_' . time();
+      $page_group->photo_url = $file_name;
+      Storage::putFileAs('public/pages', $request->file('photos'), $file_name);
     }
 
     $page_group->save();
@@ -127,12 +128,13 @@ class PageController extends Controller
 
     if ($request->hasFile('photos')) {
       $image = $request->file('photos');
-      Storage::putFileAs('public/pages', $image, $image->getClientOriginalName());
+      $file_name = 'page_' . time();
+      Storage::putFileAs('public/pages', $image, $file_name);
 
       PageGroup::whereId($id)
         ->update([
           'page_category_group_id' => $category_group_id,
-          'photo_url' => $image->getClientOriginalName()
+          'photo_url' => $file_name
         ]);
     } else {
       PageGroup::whereId($id)

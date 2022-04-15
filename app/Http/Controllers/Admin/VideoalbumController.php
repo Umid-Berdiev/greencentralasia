@@ -65,8 +65,9 @@ class VideoalbumController extends Controller
       $model->group = $grp_id;
 
       if ($request->hasFile("cover")) {
-        $model->cover = $request->file('cover')->getClientOriginalName();
-        Storage::putFileAs('public/video-categories', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+        $file_name = 'video_album_' . time();
+        $model->cover = $file_name;
+        Storage::putFileAs('public/video-categories', $request->file('cover'), $file_name);
       } else $model->cover = "videogallery.png";
 
       $model->save();
@@ -109,8 +110,9 @@ class VideoalbumController extends Controller
       $model->Description = $request->descriptions[$key];
 
       if ($request->hasFile("cover")) {
-        $model->cover = $request->file('cover')->getClientOriginalName();
-        Storage::putFileAs('public/video-categories', $request->file('cover'), $request->file('cover')->getClientOriginalName());
+        $file_name = 'video_album_' . time();
+        $model->cover = $file_name;
+        Storage::putFileAs('public/video-categories', $request->file('cover'), $file_name);
       } else $model->cover = "videogallery.png";
 
       if ($request->remove_cover == "on") {
