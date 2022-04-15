@@ -3,11 +3,17 @@
     <div class="logotypes_main row justify-content-center py-5 align-items-end">
       <div class="col-auto">
         <a target="blank" href="#">
-          <img src="{{ asset('GCAlogos/2.jpg') }}" alt="logo1" width="550">
+          <img src="{{ asset('GCAlogos/German-cooperation-logo.jpg') }}" alt="logo1" height="200">
         </a>
       </div>
       <div class="col-auto">
-        <p>In cooperation with:</p>
+        <p><b>Implemented by:</b></p>
+        <a target="blank" href="#">
+          <img src="{{ asset('GCAlogos/giz2.jpg') }}" alt="gizlogo" height="90">
+        </a>
+      </div>
+      <div class="col-auto">
+        <p><b>In cooperation with:</b></p>
         <a target="blank"
           href="https://www.pik-potsdam.de/en/institute/departments/climate-resilience/projects/project-pages/green-central-asia?searchterm=green+ce">
           <img src="{{ asset('GCAlogos/PIK.jpg') }}" alt="logo" height="70" style="margin-top:20px;margin-right: 10px"

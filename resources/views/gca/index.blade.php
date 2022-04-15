@@ -15,5 +15,4 @@
 @push('scripts')
 <script src="{{ asset('project_gca/js/swiper.min.js') }}"></script>
 <script src="{{ asset('project_gca/js/main.js') }}"></script>
-
 @endpush
