@@ -6,6 +6,7 @@
     <thead>
       <tr>
         <th>#</th>
+        <th></th>
         <th>
           ОНЛАЙН<br>
           (последний 3 мин)
@@ -36,6 +37,7 @@
         <td>{{ $online_users }}</td>
         <td>{{ $today_users }}</td>
         <td>{{ $yesterday_users }}</td>
+        <td>{{ $week_users }}</td>
         <td>{{ $month_users }}</td>
         <td>{{ $alltime_users }}</td>
       </tr>
