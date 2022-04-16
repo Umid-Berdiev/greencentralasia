@@ -32,13 +32,18 @@ class DashboardController extends Controller
     $last_month->setStart($start_of_last_month);
     $last_month->setEnd($end_of_last_month);
 
+    $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
+    $end_of_all_time = Carbon::now();
+    $all_time = new Minutes();
+    $all_time->setStart($start_of_all_time);
+    $all_time->setEnd($end_of_all_time);
 
     $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
     $today_users = Tracker::users($today)->count();
     $yesterday_users = Tracker::users($yesterday)->count();
     $week_users = Tracker::users($last_week)->count();
     $month_users = Tracker::users($last_month)->count();
-    $alltime_users = Tracker::users(0)->count();
+    $alltime_users = Tracker::users($all_time)->count();
 
     return view('admin.dashboard.index', compact(
       'online_users',
