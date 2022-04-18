@@ -32,8 +32,8 @@ class DashboardController extends Controller
 
   public function sessionsYesterday()
   {
-    $start_of_yesterday = Carbon::yesterday()->format('Y-m-d H:i:s');
-    $start_of_today = Carbon::today()->format('Y-m-d H:i:s');
+    $start_of_yesterday = date('Y-m-d 00:00:00', strtotime('-1 days'));
+    $start_of_today = date('Y-m-d 00:00:00');
 
     $result = 0;
 
@@ -48,8 +48,8 @@ class DashboardController extends Controller
   public function sessionsInLastWeek()
   {
     // dd($array);
-    $first_day = date('Y-m-d H:i:s', strtotime("-6 days"));
-    $start_of_today = Carbon::today()->format('Y-m-d H:i:s');
+    $first_day = date('Y-m-d 00:00:00', strtotime("-6 days"));
+    $start_of_today = date('Y-m-d H:i:s');
 
     $result = 0;
 
@@ -63,8 +63,8 @@ class DashboardController extends Controller
 
   public function sessionsInLastMonth()
   {
-    $first_day = date('Y-m-d H:i:s', strtotime("first day of previous month"));
-    $last_day = date('Y-m-d H:i:s', strtotime("last day of previous month"));
+    $first_day = date('Y-m-d 00:00:00', strtotime("first day of previous month"));
+    $last_day = date('Y-m-d 23:59:59', strtotime("last day of previous month"));
 
     return Tracker::sessions()->where([
       'created_at', '>=', $first_day,
