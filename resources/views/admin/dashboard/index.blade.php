@@ -24,7 +24,7 @@
           {{ date('d.m', strtotime("-7 days")) . ' - ' . date('d.m') }}
         </th>
         <th>
-          МЕСЯЦ<br>
+          ПРОШЛЫЙ МЕСЯЦ<br>
           {{ date('M Y', strtotime("-1 month")) }}
         </th>
         <th>ВСЕГО</th>

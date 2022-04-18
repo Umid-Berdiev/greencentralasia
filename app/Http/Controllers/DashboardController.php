@@ -47,11 +47,10 @@ class DashboardController extends Controller
 
   public function sessionsInLastWeek($sessions)
   {
-    // dd($array);
     $first_day = date('Y-m-d 00:00:00', strtotime("-6 days"));
     $start_of_today = date('Y-m-d H:i:s');
 
-    $result = $sessions
+    $result = Tracker::sessions()
       ->where('created_at', '>=', $first_day)
       ->where('created_at', '<=', $start_of_today)
       ->count();
