@@ -55,13 +55,17 @@ class DashboardController extends Controller
     $first_day = date("Y-m-d", strtotime("-6 days"));
     $last_day = date("Y-m-d");
 
-    if (count($array) > 0)
-      return $array->where([
+    $result = 0;
+
+    if (count($array) > 0) {
+      $result = $array->where([
         'created_at', '>', $first_day,
         'created_at', '<', $last_day
       ])->count();
 
-    return 0;
+      dd($result);
+    }
+    return $result;
   }
 
   public function sessionsInLastMonth($array)
