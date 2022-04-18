@@ -26,12 +26,10 @@ class Footer extends Component
    */
   public function render()
   {
-    $today = new Minutes();
-    $today->setStart(Carbon::today());
-    $today->setEnd(Carbon::now());
-    $today_visitors = Tracker::sessions($today)->count(); // defaults to 3 minutes
-    $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
+    $today = Carbon::today()->diffInMinutes(Carbon::now());
+    $online_visitors = Tracker::onlineUsers()->count(); // defaults to 3 minutes
+    $today_visitors = Tracker::sessions($today)->count();
 
-    return view('components.partials.footer', compact('today_visitors', 'online_users'));
+    return view('components.partials.footer', compact('today_visitors', 'online_visitors'));
   }
 }

@@ -11,44 +11,70 @@ class DashboardController extends Controller
 {
   public function index(Request $request)
   {
-    $today = Carbon::today()->diffInMinutes(Carbon::now());
-    $yesterday = Carbon::yesterday()->diffInMinutes(Carbon::today());
-    $last_week = Carbon::today()->subWeek()->diffInMinutes(Carbon::today());
-    // $last_month = Carbon::today()->subMonth()->diffInMinutes(Carbon::today());
-    // dd($today);
-
-    // $yesterday = new Minutes();
-    // $yesterday->setStart(Carbon::yesterday());
-    // $yesterday->setEnd(Carbon::today());
-    // dd($yesterday);
-
-    // $last_week = new Minutes();
-    // $last_week->setStart(Carbon::today()->subDays(7));
-    // $last_week->setEnd(Carbon::today());
-    // dd($last_week);
-
-    $start_of_last_month = new Carbon('first day of last month');
-    $end_of_last_month = new Carbon('last day of last month');
-    $last_month = $start_of_last_month->diffInMinutes($end_of_last_month);
-
     $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
-    $end_of_all_time = Carbon::now();
-    $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
+    $now = Carbon::now();
+    $all_time = $start_of_all_time->diffInMinutes($now);
+    $sessions = Tracker::sessions($all_time);
+    // $page_views = Tracker::pageViews($all_time);
+
+    $today = Carbon::today()->diffInMinutes(Carbon::now());
+    $yesterday = $sessions->where([
+      'created_at', '>', Carbon::yesterday(),
+      'created_at', '<', Carbon::today()
+    ])->count();
+    $last_week = $this->sessionsInLastWeek($sessions);
+    $last_month = $this->sessionsInLastMonth($sessions);
 
     $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
     $today_users = Tracker::sessions($today)->count();
-    $yesterday_users = Tracker::sessions($yesterday)->count();
-    $week_users = Tracker::sessions($last_week)->count();
-    $month_users = Tracker::sessions($last_month)->count();
-    $alltime_users = Tracker::sessions($all_time)->count();
+    $alltime_users = $sessions->count();
 
     return view('admin.dashboard.index', compact(
       'online_users',
       'today_users',
-      'yesterday_users',
-      'week_users',
-      'month_users',
+      'yesterday',
+      'last_week',
+      'last_month',
       'alltime_users',
     ));
+  }
+
+  public function sessionsYesterday($array)
+  {
+    foreach ($array as $key => $obj) {
+      if (isset($obj['date']) && $obj['date'] === date('Y-m-d', strtotime('-1 days'))) {
+        return $obj;
+      }
+    }
+
+    return false;
+  }
+
+  public function sessionsInLastWeek($array)
+  {
+    $first_day = date("Y-m-d", strtotime("-6 days"));
+    $last_day = date("Y-m-d");
+
+    if ($array && count($array))
+      return $array->where([
+        'created_at', '>', $first_day,
+        'created_at', '<', $last_day
+      ])->count();
+
+    return 0;
+  }
+
+  public function sessionsInLastMonth($array)
+  {
+    $first_day = (int) date("Y-m-d", strtotime("first day of previous month"));
+    $last_day = (int) date("Y-m-d", strtotime("last day of previous month"));
+
+    if ($array && count($array))
+      return $array->where([
+        'created_at', '>', $first_day,
+        'created_at', '<', $last_day
+      ])->count();
+
+    return 0;
   }
 }
