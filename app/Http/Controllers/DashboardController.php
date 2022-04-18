@@ -37,10 +37,10 @@ class DashboardController extends Controller
 
     $result = 0;
 
-    $result = Tracker::sessions()->where([
-      ['created_at', '>=', $start_of_yesterday],
-      ['created_at', '<', $start_of_today]
-    ])->count();
+    $result = Tracker::sessions()
+      ->where('created_at', '>=', $start_of_yesterday)
+      ->where('created_at', '<', $start_of_today)
+      ->count();
 
     return $result;
   }
