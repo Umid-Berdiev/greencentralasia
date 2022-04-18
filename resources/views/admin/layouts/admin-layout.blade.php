@@ -13,9 +13,6 @@
   <!-- END META -->
 
   <!-- BEGIN STYLESHEETS -->
-  {{--
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet'
-    type='text/css' /> --}}
   <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/theme-default/bootstrap.css?1422792965') }}" />
   <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/theme-default/materialadmin.css?1425466319') }}" />
   <link type="text/css" rel="stylesheet"

@@ -39,11 +39,11 @@ class DashboardController extends Controller
     $all_time->setEnd($end_of_all_time);
 
     $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
-    $today_users = Tracker::users($today)->count();
-    $yesterday_users = Tracker::users($yesterday)->count();
-    $week_users = Tracker::users($last_week)->count();
-    $month_users = Tracker::users($last_month)->count();
-    $alltime_users = Tracker::users($all_time)->count();
+    $today_users = Tracker::sessions($today)->count();
+    $yesterday_users = Tracker::sessions($yesterday)->count();
+    $week_users = Tracker::sessions($last_week)->count();
+    $month_users = Tracker::sessions($last_month)->count();
+    $alltime_users = Tracker::sessions($all_time)->count();
 
     return view('admin.dashboard.index', compact(
       'online_users',

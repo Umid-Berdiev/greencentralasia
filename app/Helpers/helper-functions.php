@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Language;
+use App\Models\Visitor;
 
 function current_language()
 {

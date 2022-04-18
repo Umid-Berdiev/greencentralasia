@@ -35,6 +35,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\VideoController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,21 +89,18 @@ Route::get('/', function () {
   return redirect("/en");
 });
 
-Route::get('locale/{locale}', function ($locale) {
-  // app()->setLocale($locale);
-  session()->put('locale', $locale);
-  return redirect()->back();
-});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 ### admin routes
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-  Route::get('/', function () {
-    return redirect(route('posts.index'));
-  })->name('post');
+  Route::get('/', fn () => redirect(route('posts.index')))->name('post');
 
-  // MenuBuilder::routes();
+  Route::get('locale', function (Request $request) {
+    // dd($request->all());
+    app()->setLocale($request->locale);
+    return redirect('/admin');
+  })->name('set-locale');
 
   Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
   Route::resource('documents', DocumentController::class);

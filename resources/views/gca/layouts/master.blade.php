@@ -23,14 +23,16 @@
 
 <body>
   <header>
-    @include('gca.blocks.top-navbar')
+    {{-- @include('gca.blocks.top-navbar') --}}
     {{-- @include('gca.blocks.menu') --}}
+    <x-partials.top-navbar :languages="$languages->get()" />
     <x-partials.main-menu />
   </header>
 
   @yield('main_top_layout')
   @yield('content')
-  @include('gca.blocks.footer')
+  {{-- @include('gca.blocks.footer') --}}
+  <x-partials.footer />
 
   <script src="{{ asset('project_gca/js/jquery.min.js') }}"></script>
   <script src="{{ asset('project_gca/js/bootstrap.min.js') }}"></script>

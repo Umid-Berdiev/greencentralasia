@@ -68,8 +68,8 @@
             </div>
           </form>
           <br>
-          <p class="mb-1">{{ __('blog.online_users') }}: 2</p>
-          <p class="mb-1">{{ __('blog.today_users') }}: 15</p>
+          <p class="mb-1">{{ __('blog.today_users') . ': ' . $today_visitors }}</p>
+          <p class="mb-1">{{ __('blog.online_users') . ': ' . $online_users }}</p>
         </div>
       </div>
     </div>
@@ -133,6 +133,7 @@
   </div>
 
 </footer>
+
 @include('gca.blocks.cookie-banner')
 
 @push('scripts')

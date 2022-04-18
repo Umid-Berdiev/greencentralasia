@@ -19,17 +19,7 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="headerbar-right">
-      <ul class="header-nav header-nav-profile">
-        @foreach($languages->get() as $key => $language)
-        <li>
-          <a class="text-uppercase {{ app()->getLocale() == $language->language_prefix ? 'text-danger' : '' }}"
-            href="{{ url('/locale/' . $language->language_prefix) }}">
-            {{ $language->language_prefix }}
-          </a>
-        </li>
-        @break
-        @endforeach
-      </ul>
+      <x-partials.admin.lang-switcher :languages="$languages->get()" />
       <ul class="header-nav header-nav-profile">
         <li class="dropdown">
           <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
