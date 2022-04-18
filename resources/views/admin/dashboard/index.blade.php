@@ -36,9 +36,9 @@
         <td>Посетители</td>
         <td>{{ $online_users }}</td>
         <td>{{ $today_users }}</td>
-        <td>{{ $yesterday_users }}</td>
-        <td>{{ $week_users }}</td>
-        <td>{{ $month_users }}</td>
+        <td>{{ $yesterday }}</td>
+        <td>{{ $last_week }}</td>
+        <td>{{ $last_month }}</td>
         <td>{{ $alltime_users }}</td>
       </tr>
     </tbody>
