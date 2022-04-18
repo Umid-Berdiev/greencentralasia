@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PragmaRX\Tracker\Support\Minutes;
-// use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
-use Tracker;
+use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
 
 class DashboardController extends Controller
 {
   public function index(Request $request)
   {
+    $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
+    $end_of_all_time = Carbon::now();
+    $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
+    $sessions = Tracker::sessions($all_time);
     $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
     $today = Carbon::today()->diffInMinutes(Carbon::now());
     $today_users = Tracker::users($today)->count();
 
-    $sessions = Tracker::sessions();
     $yesterday_sessions = $this->sessionsYesterday($sessions);
     $last_week_sessions = $this->sessionsInLastWeek($sessions);
     $last_month_sessions = $this->sessionsInLastMonth($sessions);
