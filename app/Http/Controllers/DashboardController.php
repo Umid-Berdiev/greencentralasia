@@ -11,11 +11,12 @@ class DashboardController extends Controller
 {
   public function index(Request $request)
   {
-    $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
-    $now = Carbon::now();
-    $all_time = $start_of_all_time->diffInMinutes($now);
-    $sessions = Tracker::sessions();
+    $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
+    // $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
+    // $all_time = $start_of_all_time->diffInMinutes($now);
     // $page_views = Tracker::pageViews($all_time);
+    // $now = Carbon::now();
+    $sessions = Tracker::sessions();
 
     $today = Carbon::today()->diffInMinutes(Carbon::now());
     $yesterday_sessions = $sessions->where([
@@ -25,7 +26,6 @@ class DashboardController extends Controller
     $last_week_sessions = $this->sessionsInLastWeek($sessions);
     $last_month_sessions = $this->sessionsInLastMonth($sessions);
 
-    $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
     $today_users = Tracker::users($today)->count();
     $alltime_users = $sessions->count();
 
@@ -55,7 +55,7 @@ class DashboardController extends Controller
     $first_day = date("Y-m-d", strtotime("-6 days"));
     $last_day = date("Y-m-d");
 
-    if ($array && count($array))
+    if (count($array) > 0)
       return $array->where([
         'created_at', '>', $first_day,
         'created_at', '<', $last_day
@@ -69,7 +69,7 @@ class DashboardController extends Controller
     $first_day = (int) date("Y-m-d", strtotime("first day of previous month"));
     $last_day = (int) date("Y-m-d", strtotime("last day of previous month"));
 
-    if ($array && count($array))
+    if (count($array) > 0)
       return $array->where([
         'created_at', '>', $first_day,
         'created_at', '<', $last_day
