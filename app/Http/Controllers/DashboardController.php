@@ -52,7 +52,7 @@ class DashboardController extends Controller
 
   public function sessionsInLastWeek($array)
   {
-    dd($array);
+    dd(count($array));
     $first_day = date("Y-m-d", strtotime("-6 days"));
     $last_day = date("Y-m-d");
 
