@@ -18,23 +18,23 @@ class DashboardController extends Controller
     // $page_views = Tracker::pageViews($all_time);
 
     $today = Carbon::today()->diffInMinutes(Carbon::now());
-    $yesterday = $sessions->where([
+    $yesterday_sessions = $sessions->where([
       'created_at', '>', Carbon::yesterday(),
       'created_at', '<', Carbon::today()
     ])->count();
-    $last_week = $this->sessionsInLastWeek($sessions);
-    $last_month = $this->sessionsInLastMonth($sessions);
+    $last_week_sessions = $this->sessionsInLastWeek($sessions);
+    $last_month_sessions = $this->sessionsInLastMonth($sessions);
 
     $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
-    $today_users = Tracker::sessions($today)->count();
+    $today_users = Tracker::users($today)->count();
     $alltime_users = $sessions->count();
 
     return view('admin.dashboard.index', compact(
       'online_users',
       'today_users',
-      'yesterday',
-      'last_week',
-      'last_month',
+      'yesterday_sessions',
+      'last_week_sessions',
+      'last_month_sessions',
       'alltime_users',
     ));
   }
