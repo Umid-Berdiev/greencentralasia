@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PragmaRX\Tracker\Support\Minutes;
-use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
+// use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
+use Tracker;
 
 class DashboardController extends Controller
 {
