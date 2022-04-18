@@ -68,8 +68,8 @@
             </div>
           </form>
           <br>
-          <p class="mb-1">{{ __('blog.today_users') . ': ' . $today_visitors }}</p>
           <p class="mb-1">{{ __('blog.online_users') . ': ' . $online_users }}</p>
+          <p class="mb-1">{{ __('blog.today_users') . ': ' . $today_visitors }}</p>
         </div>
       </div>
     </div>
