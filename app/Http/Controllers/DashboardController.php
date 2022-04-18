@@ -11,14 +11,15 @@ class DashboardController extends Controller
 {
   public function index(Request $request)
   {
+    $online_users = Tracker::sessions(3)->count(); // defaults to 3 minutes
+    $today = Carbon::today()->diffInMinutes(Carbon::now());
+    $today_users = Tracker::sessions($today)->count();
+
     $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
     $end_of_all_time = Carbon::now();
     $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
-    $online_users = Tracker::sessions(3)->count(); // defaults to 3 minutes
     $sessions = Tracker::sessions($all_time);
-    $today = Carbon::today()->diffInMinutes(Carbon::now());
 
-    $today_users = Tracker::users($today)->count();
 
     $yesterday_sessions = $this->sessionsYesterday($sessions);
     $last_week_sessions = $this->sessionsInLastWeek($sessions);
