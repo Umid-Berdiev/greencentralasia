@@ -14,7 +14,7 @@ class DashboardController extends Controller
     $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
     $now = Carbon::now();
     $all_time = $start_of_all_time->diffInMinutes($now);
-    $sessions = Tracker::sessions($all_time);
+    $sessions = Tracker::sessions();
     // $page_views = Tracker::pageViews($all_time);
 
     $today = Carbon::today()->diffInMinutes(Carbon::now());
