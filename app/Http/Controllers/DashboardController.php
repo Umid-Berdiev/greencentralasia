@@ -13,12 +13,14 @@ class DashboardController extends Controller
   {
     $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
     $today = Carbon::today()->diffInMinutes(Carbon::now());
-    $yesterday_sessions = $this->sessionsYesterday();
-    $last_week_sessions = $this->sessionsInLastWeek();
-    $last_month_sessions = $this->sessionsInLastMonth();
-
     $today_users = Tracker::users($today)->count();
-    $alltime_users = Tracker::sessions()->count();
+
+    $sessions = Tracker::sessions();
+    $yesterday_sessions = $this->sessionsYesterday($sessions);
+    $last_week_sessions = $this->sessionsInLastWeek($sessions);
+    $last_month_sessions = $this->sessionsInLastMonth($sessions);
+
+    $alltime_users = $sessions->count();
 
     return view('admin.dashboard.index', compact(
       'online_users',
@@ -30,14 +32,12 @@ class DashboardController extends Controller
     ));
   }
 
-  public function sessionsYesterday()
+  public function sessionsYesterday($sessions)
   {
     $start_of_yesterday = date('Y-m-d 00:00:00', strtotime('-1 days'));
     $start_of_today = date('Y-m-d 00:00:00');
 
-    $result = 0;
-
-    $result = Tracker::sessions()
+    $result = $sessions
       ->where('created_at', '>=', $start_of_yesterday)
       ->where('created_at', '<', $start_of_today)
       ->count();
@@ -45,32 +45,30 @@ class DashboardController extends Controller
     return $result;
   }
 
-  public function sessionsInLastWeek()
+  public function sessionsInLastWeek($sessions)
   {
     // dd($array);
     $first_day = date('Y-m-d 00:00:00', strtotime("-6 days"));
     $start_of_today = date('Y-m-d H:i:s');
 
-    $result = 0;
-
-    $result = Tracker::sessions()->where([
-      ['created_at', '>=', $first_day],
-      ['created_at', '<=', $start_of_today]
-    ])->count();
+    $result = $sessions
+      ->where('created_at', '>=', $first_day)
+      ->where('created_at', '<=', $start_of_today)
+      ->count();
 
     return $result;
   }
 
-  public function sessionsInLastMonth()
+  public function sessionsInLastMonth($sessions)
   {
     $first_day = date('Y-m-d 00:00:00', strtotime("first day of previous month"));
     $last_day = date('Y-m-d 23:59:59', strtotime("last day of previous month"));
 
-    return Tracker::sessions()->where([
-      'created_at', '>=', $first_day,
-      'created_at', '<=', $last_day
-    ])->count();
+    $result = $sessions
+      ->where('created_at', '>=', $first_day)
+      ->where('created_at', '<=', $last_day)
+      ->count();
 
-    return 0;
+    return $result;
   }
 }
