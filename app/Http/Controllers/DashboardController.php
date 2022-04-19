@@ -11,21 +11,19 @@ class DashboardController extends Controller
 {
   public function index(Request $request)
   {
-    $online_users = Tracker::sessions(3)->count(); // defaults to 3 minutes
+    $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
     $today = Carbon::today()->diffInMinutes(Carbon::now());
     $today_users = Tracker::sessions($today)->count();
 
     $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
     $end_of_all_time = Carbon::now();
     $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
-    $sessions = Tracker::sessions($all_time);
 
+    $yesterday_sessions = $this->sessionsYesterday();
+    $last_week_sessions = $this->sessionsInLastWeek();
+    $last_month_sessions = $this->sessionsInLastMonth();
 
-    $yesterday_sessions = $this->sessionsYesterday($sessions);
-    $last_week_sessions = $this->sessionsInLastWeek($sessions);
-    $last_month_sessions = $this->sessionsInLastMonth($sessions);
-
-    $alltime_users = $sessions->count();
+    $alltime_users = Tracker::sessions($all_time)->count();
 
     return view('admin.dashboard.index', compact(
       'online_users',
@@ -37,12 +35,16 @@ class DashboardController extends Controller
     ));
   }
 
-  public function sessionsYesterday($sessions)
+  public function sessionsYesterday()
   {
     $start_of_yesterday = date('Y-m-d 00:00:00', strtotime('-1 days'));
     $start_of_today = date('Y-m-d 00:00:00');
 
-    $result = $sessions
+    $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
+    $end_of_all_time = Carbon::now();
+    $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
+
+    $result = Tracker::sessions($all_time)
       ->where('created_at', '>=', $start_of_yesterday)
       ->where('created_at', '<', $start_of_today)
       ->count();
@@ -50,12 +52,16 @@ class DashboardController extends Controller
     return $result;
   }
 
-  public function sessionsInLastWeek($sessions)
+  public function sessionsInLastWeek()
   {
     $first_day = date('Y-m-d 00:00:00', strtotime("-6 days"));
     $start_of_today = date('Y-m-d H:i:s');
 
-    $result = Tracker::sessions()
+    $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
+    $end_of_all_time = Carbon::now();
+    $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
+
+    $result = Tracker::sessions($all_time)
       ->where('created_at', '>=', $first_day)
       ->where('created_at', '<=', $start_of_today)
       ->count();
@@ -63,12 +69,16 @@ class DashboardController extends Controller
     return $result;
   }
 
-  public function sessionsInLastMonth($sessions)
+  public function sessionsInLastMonth()
   {
     $first_day = date('Y-m-d 00:00:00', strtotime("first day of previous month"));
     $last_day = date('Y-m-d 23:59:59', strtotime("last day of previous month"));
 
-    $result = $sessions
+    $start_of_all_time = Carbon::create(2022, 1, 1, 0, 0, 0);
+    $end_of_all_time = Carbon::now();
+    $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
+
+    $result = Tracker::sessions($all_time)
       ->where('created_at', '>=', $first_day)
       ->where('created_at', '<=', $last_day)
       ->count();
