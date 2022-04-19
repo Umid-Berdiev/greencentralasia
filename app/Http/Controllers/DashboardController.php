@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
   public function index(Request $request)
   {
-    $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
+    // $online_users = Tracker::onlineUsers()->count(); // defaults to 3 minutes
     $today = Carbon::today()->diffInMinutes(Carbon::now());
     $today_users = Tracker::sessions($today)->count();
 
@@ -26,7 +26,7 @@ class DashboardController extends Controller
     $alltime_users = Tracker::sessions($all_time)->count();
 
     return view('admin.dashboard.index', compact(
-      'online_users',
+      // 'online_users',
       'today_users',
       'yesterday_sessions',
       'last_week_sessions',

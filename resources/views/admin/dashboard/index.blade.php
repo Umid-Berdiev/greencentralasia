@@ -7,10 +7,10 @@
       <tr>
         <th>#</th>
         <th></th>
-        <th>
+        {{-- <th>
           ОНЛАЙН<br>
           (последний 3 мин)
-        </th>
+        </th> --}}
         <th>
           СЕГОДНЯ<br>
           {{ date('d.m.Y') }}
@@ -34,7 +34,7 @@
       <tr>
         <td><button type="button">?</button></td>
         <td>Посетители</td>
-        <td>{{ $online_users }}</td>
+        {{-- <td>{{ $online_users }}</td> --}}
         <td>{{ $today_users }}</td>
         <td>{{ $yesterday_sessions }}</td>
         <td>{{ $last_week_sessions }}</td>
