@@ -25,7 +25,7 @@ class Footer extends Component
    */
   public function render()
   {
-    $online_visitors = Tracker::sessions(3)->count(); // defaults to 3 minutes
+    $online_visitors = Tracker::onlineUsers()->count(); // defaults to 3 minutes
     $today = Carbon::today()->diffInMinutes(Carbon::now());
     $today_visitors = Tracker::sessions($today)->count();
 
