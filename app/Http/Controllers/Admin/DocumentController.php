@@ -41,7 +41,6 @@ class DocumentController extends Controller
 
   public function store(Request $request)
   {
-
     $validator = Validator::make($request->all(), [
       'titles.*' => 'required|max:255',
       'descriptions.*' => 'required',
@@ -60,9 +59,12 @@ class DocumentController extends Controller
     $grp_id = $this->getGroupId();
 
     foreach ($request->language_ids as $key => $value) {
+      $file = null;
+
       if ($request->file("files")) {
         $file = $request->file("files")[$key];
         $file_name = 'doc_' . time();
+
         Storage::putFileAs('public/upload/', $file, $file_name);
         $file_type = $file->extension();
 
@@ -74,7 +76,7 @@ class DocumentController extends Controller
         }
       }
 
-      Document::create([
+      $doc = Document::create([
         'title' => $request->titles[$key],
         'description' => $request->descriptions[$key],
         'link' => $request->links,
@@ -85,7 +87,7 @@ class DocumentController extends Controller
         'doc_category_id' => $request->category_id,
         'files' => $file_name,
         'file_type' => $file->clientExtension(),
-        'file_size' => $file->getClientSize()
+        'file_size' => $file->getSize()
       ]);
     }
 
@@ -158,7 +160,7 @@ class DocumentController extends Controller
           ->where("language_id", $value)->update([
             'files' => $file_name,
             'file_type' => $file->clientExtension(),
-            'file_size' => $file->getClientSize(),
+            'file_size' => $file->getSize(),
           ]);
       }
 

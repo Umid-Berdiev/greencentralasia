@@ -35,27 +35,25 @@
         <tr>
           <td>№</td>
           <td>TITLE</td>
-          <td>REGISTER No</td>
+          {{-- <td>REGISTER No</td> --}}
           <td>CATEGORY</td>
           <td>ACTIONS</td>
         </tr>
       </thead>
       <tbody>
-        {{-- @dd($docs) --}}
         @foreach($docs as $key => $page)
-        {{-- @dd($page->category->category_name) --}}
         <tr>
-          <td>{{$key+1}}</td>
-          <td>{{$page->title}}</td>
-          <td>{{$page->r_number}}</td>
-          <td>{{$page->category && $page->category->category_name}}</td>
-          <td>
-            <form style="display: inline;" action="{{ route('documents.edit', $page->group) }}" method="get">
-              <button>
+          <td>{{ $key + 1 }}</td>
+          <td>{{ $page->title }}</td>
+          {{-- <td>{{ $page->r_number}}</td> --}}
+          <td>{{ $page->category ? $page->category->category_name : '' }}</td>
+          <td style="display: flex; gap:0.5rem;">
+            <form action="{{ route('documents.edit', $page->group) }}" method="GET">
+              <button type="submit">
                 <i class="fa fa-edit"></i>
               </button>
             </form>
-            <form style="display: inline;" action="{{ route('documents.destroy', $page->group) }}" method="POST">
+            <form action="{{ route('documents.destroy', $page->group) }}" method="POST">
               @csrf
               @method('delete')
               <button class="" type="submit" onclick="return confirm('Вы уверены?');">
