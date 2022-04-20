@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
 
 class Session extends Model
@@ -29,11 +30,13 @@ class Session extends Model
     $end_of_all_time = Carbon::now();
     $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
 
-    $result = Tracker::sessions($all_time)
-      ->where('updated_at', '>=', $start_of_yesterday)
-      ->where('updated_at', '<', $start_of_today);
+    $result = DB::connection('tracker')
+      ->table('tracker_sessions')
+      ->where('created_at', '>=', $start_of_yesterday)
+      ->where('created_at', '<', $start_of_today)
+      ->count();
 
-    return count($result);
+    return $result;
   }
 
   public static function lastSevenDays()
@@ -45,11 +48,13 @@ class Session extends Model
     $end_of_all_time = Carbon::now();
     $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
 
-    $result = Tracker::sessions($all_time)
-      ->where('updated_at', '>=', $first_day)
-      ->where('updated_at', '<=', $start_of_today);
+    $result = DB::connection('tracker')
+      ->table('tracker_sessions')
+      ->where('created_at', '>=', $first_day)
+      ->where('created_at', '<=', $start_of_today)
+      ->count();
 
-    return count($result);
+    return $result;
   }
 
   public static function previousMonth()
@@ -61,10 +66,12 @@ class Session extends Model
     $end_of_all_time = Carbon::now();
     $all_time = $start_of_all_time->diffInMinutes($end_of_all_time);
 
-    $result = Tracker::sessions($all_time)
-      ->where('updated_at', '>=', $first_day)
-      ->where('updated_at', '<=', $last_day);
+    $result = DB::connection('tracker')
+      ->table('tracker_sessions')
+      ->where('created_at', '>=', $first_day)
+      ->where('created_at', '<=', $last_day)
+      ->count();
 
-    return count($result);
+    return $result;
   }
 }
