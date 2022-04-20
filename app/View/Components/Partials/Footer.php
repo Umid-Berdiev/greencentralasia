@@ -9,16 +9,14 @@ use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
 
 class Footer extends Component
 {
-  public $visitors;
-
   /**
    * Create a new component instance.
    *
    * @return void
    */
-  public function __construct($visitors)
+  public function __construct()
   {
-    $this->visitors = $visitors;
+    //
   }
 
   /**
@@ -28,6 +26,9 @@ class Footer extends Component
    */
   public function render()
   {
-    return view('components.partials.footer');
+    $online_visitors = Tracker::onlineUsers()->count(); // defaults to 3 minutes
+    $today_visitors = Session::today();
+
+    return view('components.partials.footer', compact('today_visitors', 'online_visitors'));
   }
 }
