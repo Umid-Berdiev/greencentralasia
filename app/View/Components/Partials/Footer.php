@@ -29,10 +29,10 @@ class Footer extends Component
     return view('components.partials.footer');
   }
 
-  public function online_visitors()
-  {
-    return Tracker::onlineUsers()->count(); // defaults to 3 minutes
-  }
+  // public function online_visitors()
+  // {
+  //   return Tracker::onlineUsers()->count(); // defaults to 3 minutes
+  // }
 
   public function today_visitors()
   {
