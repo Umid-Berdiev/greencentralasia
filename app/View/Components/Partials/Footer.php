@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Partials;
 
+use App\Models\Session;
 use Carbon\Carbon;
 use Illuminate\View\Component;
 use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
@@ -26,8 +27,7 @@ class Footer extends Component
   public function render()
   {
     $online_visitors = Tracker::onlineUsers(); // defaults to 3 minutes
-    $today = Carbon::today()->diffInMinutes(Carbon::now());
-    $today_visitors = Tracker::sessions($today);
+    $today_visitors = Session::today();
 
     return view('components.partials.footer', compact('today_visitors', 'online_visitors'));
   }
