@@ -68,8 +68,8 @@
             </div>
           </form>
           <br>
-          <p class="text-capitalize mb-1">{{ __('blog.online_users') . ': ' . 1 }}</p>
-          <p class="text-capitalize mb-1">{{ __('blog.today_users') . ': ' . $today_visitors }}</p>
+          <p class="text-capitalize mb-1">{{ __('blog.online_users') . ': ' . $visitors['online_visitors'] }}</p>
+          <p class="text-capitalize mb-1">{{ __('blog.today_users') . ': ' . $visitors['today_visitors'] }}</p>
         </div>
       </div>
     </div>

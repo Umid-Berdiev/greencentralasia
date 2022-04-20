@@ -26,16 +26,11 @@ class Footer extends Component
    */
   public function render()
   {
-    return view('components.partials.footer');
-  }
+    $visitors = [
+      'online_visitors' => Tracker::onlineUsers()->count(), // defaults to 3 minutes
+      'today_visitors' => Session::today()
+    ];
 
-  // public function online_visitors()
-  // {
-  //   return Tracker::onlineUsers()->count(); // defaults to 3 minutes
-  // }
-
-  public function today_visitors()
-  {
-    return Session::today();
+    return view('components.partials.footer', compact('visitors'));
   }
 }
