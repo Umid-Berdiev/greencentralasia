@@ -32,7 +32,7 @@
   @yield('main_top_layout')
   @yield('content')
   {{-- @include('gca.blocks.footer') --}}
-  <x-partials.footer />
+  <x-partials.footer :visitors="$visitors" />
 
   <script src="{{ asset('project_gca/js/jquery.min.js') }}"></script>
   <script src="{{ asset('project_gca/js/bootstrap.min.js') }}"></script>
