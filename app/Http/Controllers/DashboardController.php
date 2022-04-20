@@ -17,7 +17,7 @@ class DashboardController extends Controller
     $yesterday_sessions = Session::yesterday();
     $last_week_sessions = Session::lastSevenDays();
     $last_month_sessions = Session::previousMonth();
-    $alltime_users = Session::count();
+    $alltime_users = Session::allTime();
 
     return view('admin.dashboard.index', compact(
       // 'online_users',

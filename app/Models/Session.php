@@ -16,9 +16,9 @@ class Session extends Model
   {
     $today = Carbon::today()->diffInMinutes(Carbon::now());
 
-    $result = Tracker::sessions($today);
+    $result = Tracker::sessions($today)->where('is_robot', 0)->count();
 
-    return count($result);
+    return $result;
   }
 
   public static function yesterday()
@@ -32,6 +32,7 @@ class Session extends Model
 
     $result = DB::connection('tracker')
       ->table('tracker_sessions')
+      ->where('is_robot', 0)
       ->where('created_at', '>=', $start_of_yesterday)
       ->where('created_at', '<', $start_of_today)
       ->count();
@@ -50,6 +51,7 @@ class Session extends Model
 
     $result = DB::connection('tracker')
       ->table('tracker_sessions')
+      ->where('is_robot', 0)
       ->where('created_at', '>=', $first_day)
       ->where('created_at', '<=', $start_of_today)
       ->count();
@@ -68,8 +70,19 @@ class Session extends Model
 
     $result = DB::connection('tracker')
       ->table('tracker_sessions')
+      ->where('is_robot', 0)
       ->where('created_at', '>=', $first_day)
       ->where('created_at', '<=', $last_day)
+      ->count();
+
+    return $result;
+  }
+
+  public static function allTime()
+  {
+    $result = DB::connection('tracker')
+      ->table('tracker_sessions')
+      ->where('is_robot', 0)
       ->count();
 
     return $result;
