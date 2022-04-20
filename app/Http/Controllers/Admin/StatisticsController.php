@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Language;
 use App\Models\Statistics;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -36,7 +35,6 @@ class StatisticsController extends Controller
    */
   public function store(Request $request)
   {
-    // dd($request->all());
     $validator = Validator::make($request->all(), [
       'names.*' => 'required',
       'photo_url' => 'required',
@@ -58,11 +56,13 @@ class StatisticsController extends Controller
 
       if ($request->hasFile('photo_url')) {
         $file_name = 'statistics_' . time();
+        // dd($file_name);
         $statistics->photo_url = $file_name;
         Storage::putFileAs('public/statistics', $request->file('photo_url'), $file_name);
       } else $statistics->photo_url = "";
 
       $statistics->save();
+      // dd($statistics);
     }
 
     return redirect(route('statistics.edit', $statistics->group))->with('success', 'Created!');
