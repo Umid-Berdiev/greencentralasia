@@ -65,7 +65,7 @@ class DocumentController extends Controller
       $file_name = 'doc_' . time();
       Storage::putFileAs('public/upload/', $file, $file_name);
 
-      Document::create([
+      $doc = Document::create([
         'title' => $request->titles[$key],
         'description' => $request->descriptions[$key],
         'link' => $request->links,
@@ -78,7 +78,8 @@ class DocumentController extends Controller
         'file_type' => $file->clientExtension(),
         'file_size' => $file->getSize()
       ]);
-      // dd($doc);
+
+      dd($doc);
 
       // if ($request->hasFile("files")) {
       // $file = $request->file("files")[$key];
