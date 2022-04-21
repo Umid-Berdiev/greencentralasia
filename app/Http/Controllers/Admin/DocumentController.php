@@ -106,13 +106,13 @@ class DocumentController extends Controller
     return redirect()->route('documents.edit', $grp_id)->with('success', 'Created!');
   }
 
-  public function edit(Request $request, $id)
+  public function edit(Request $request, $group_id)
   {
-    // dd($id);
+    // dd($group_id);
     $lang_id = current_language()->id;
-    $model  = Document::where("group", $id)->get();
+    $model  = Document::where("group", $group_id)->get();
     $category = DocumentCategory::where("language_id", $lang_id)->get();
-    $grp_id = $id;
+    $grp_id = $group_id;
 
     return view("admin.document.edit", compact(
       "model",
@@ -121,7 +121,7 @@ class DocumentController extends Controller
     ));
   }
 
-  public function update(Request $request, $id)
+  public function update(Request $request, $group_id)
   {
     dd($request->all());
 
@@ -145,7 +145,7 @@ class DocumentController extends Controller
     }
 
     foreach ($request->language_ids as $key => $value) {
-      $model = Document::where("group", $id)
+      $model = Document::where("group", $group_id)
         ->where("language_id", $value)
         ->update([
           'title' => $request->titles[$key],
@@ -168,12 +168,12 @@ class DocumentController extends Controller
         //   return back()->with('error', 'Supported file types:doc,docx,pdf,ppt,pptx');
         // }
 
-        $model = Document::where('group', $id)
+        $model = Document::where('group', $group_id)
           ->where('language_id', $value)->get();
 
         Storage::delete('public/upload/' . $model[0]->files);
 
-        $model = Document::where("group", $id)
+        $model = Document::where("group", $group_id)
           ->where("language_id", $value)->update([
             'files' => $file_name,
             'file_type' => $file->clientExtension(),
@@ -189,13 +189,13 @@ class DocumentController extends Controller
     return back()->with('success', 'Updated!');
   }
 
-  public function destroy(Request $request, $id)
+  public function destroy(Request $request, $group_id)
   {
-    $model = Document::where('group', $id)->get();
+    $model = Document::where('group', $group_id)->get();
 
     Storage::delete('public/upload/'  . $model[0]->files);
 
-    Document::where("group", $id)->delete();
+    Document::where("group", $group_id)->delete();
     return back()->with('success', 'Deleted!');
   }
 
