@@ -522,7 +522,7 @@
         });
       } */
     };
-    // tinymce.init(editor_config);
+    tinymce.init(editor_config);
   </script>
 
   @stack('custom-scripts')

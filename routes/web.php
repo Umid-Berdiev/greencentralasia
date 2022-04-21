@@ -124,7 +124,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::resource('posts', PostController::class);
   Route::resource('document-categories', DocumentCategoryController::class);
   Route::resource('statistics', StatisticsController::class);
-  Route::resource('sessions', SessionController::class);
+  // Route::resource('sessions', SessionController::class);
 
   Route::get('tendercategory', [TendercategoryController::class, 'index'])->name('tendercategory');
   Route::post('tendercategory/edit', [TendercategoryController::class, 'Update']);
