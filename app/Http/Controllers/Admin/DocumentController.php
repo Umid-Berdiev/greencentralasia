@@ -59,8 +59,11 @@ class DocumentController extends Controller
     }
 
     $grp_id = $this->getGroupId();
-
     foreach ($request->language_ids as $key => $value) {
+      $file = $request->file("files")[$key];
+      $file_name = 'doc_' . time();
+      Storage::putFileAs('public/upload/', $file, $file_name);
+
       $doc = Document::create([
         'title' => $request->titles[$key],
         'description' => $request->descriptions[$key],
@@ -69,28 +72,32 @@ class DocumentController extends Controller
         'r_date' => $request->register_dates,
         'group' => $grp_id,
         'language_id' => $value,
-        'doc_category_id' => $request->category_id
+        'doc_category_id' => $request->category_id,
+        'files' => $file_name,
+        'file_type' => $file->clientExtension(),
+        'file_size' => $file->getSize()
       ]);
+      // dd($doc);
 
-      if ($request->file("files")) {
-        $file = $request->file("files")[$key];
-        $file_name = 'doc_' . time();
+      // if ($request->hasFile("files")) {
+      // $file = $request->file("files")[$key];
+      // $file_name = 'doc_' . time();
 
-        Storage::putFileAs('public/upload/', $file, $file_name);
-        // $file_type = $file->extension();
+      // Storage::putFileAs('public/upload/', $file, $file_name);
+      // $file_type = $file->extension();
 
-        /* SCREENSHOT OF FIRST PAGE OF DOCUMENT*/
-        //Supported formats:doc,docx,pdf,ppt,pptx
-        // if (!($file_type == 'doc' || $file_type == 'docx' || $file_type == 'pdf' || $file_type == 'ppt' || $file_type == 'pptx')) {
-        //   return back()
-        //     ->with('error', 'Supported file types:doc,docx,pdf,ppt,pptx');
-        // }
+      /* SCREENSHOT OF FIRST PAGE OF DOCUMENT*/
+      //Supported formats:doc,docx,pdf,ppt,pptx
+      // if (!($file_type == 'doc' || $file_type == 'docx' || $file_type == 'pdf' || $file_type == 'ppt' || $file_type == 'pptx')) {
+      //   return back()
+      //     ->with('error', 'Supported file types:doc,docx,pdf,ppt,pptx');
+      // }
 
-        $doc->files = $file_name;
-        $doc->file_type = $file->clientExtension();
-        $doc->file_size = $file->getSize();
-        $doc->save();
-      }
+      // $doc->files = $file_name;
+      // $doc->file_type = $file->clientExtension();
+      // $doc->file_size = $file->getSize();
+      // $doc->save();
+      // }
     }
 
     return redirect(route('documents.edit', $grp_id))->with('success', 'Created!');
