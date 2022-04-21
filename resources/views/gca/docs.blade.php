@@ -5,7 +5,6 @@
   <div class="container">
     <div class="bar_inner">
       <div class="bar_inner_left">
-        @dd($table)
         @forelse($table as $value)
         <div class="item_documents">
           <div class="item_documents_left">
