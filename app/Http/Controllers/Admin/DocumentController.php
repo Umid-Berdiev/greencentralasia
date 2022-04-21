@@ -41,7 +41,6 @@ class DocumentController extends Controller
 
   public function store(Request $request)
   {
-    // dd($request->all());
     $validator = Validator::make($request->all(), [
       'titles.*' => 'required|max:255',
       'language_ids.*' => 'required',
@@ -79,7 +78,6 @@ class DocumentController extends Controller
         'file_type' => $file->clientExtension(),
         'file_size' => $file->getSize()
       ]);
-
       // dd($doc);
 
       // if ($request->hasFile("files")) {
@@ -103,7 +101,7 @@ class DocumentController extends Controller
       // }
     }
 
-    return redirect()->view('admin.document.edit', compact('grp_id'))->with('success', 'Created!');
+    return redirect()->route('documents.edit', $grp_id)->with('success', 'Created!');
   }
 
   public function edit(Request $request, $id)
