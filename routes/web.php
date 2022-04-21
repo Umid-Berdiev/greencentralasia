@@ -104,7 +104,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
   Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
   Route::get('documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
-  Route::put('documents/{group_id}/update', [DocumentController::class, 'update'])->name('documents.update');
+  Route::put('documents/{group_id}', [DocumentController::class, 'update'])->name('documents.update');
   Route::delete('documents/{group_id}/destroy', [DocumentController::class, 'destroy'])->name('documents.destroy');
   Route::resource('documents', DocumentController::class)->only(['index', 'create', 'store']);
   Route::resource('photos', AdminPhotoController::class);
