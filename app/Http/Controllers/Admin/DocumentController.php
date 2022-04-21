@@ -42,14 +42,16 @@ class DocumentController extends Controller
   public function store(Request $request)
   {
     $validator = Validator::make($request->all(), [
-      'titles.*' => 'required|max:255',
+      'titles' => 'required|array',
+      'titles.*' => 'required',
+      'language_ids' => 'required|array',
       'language_ids.*' => 'required',
       'descriptions' => 'required|array|size:2',
       'descriptions.*' => 'required',
       'files' => 'required|array|size:2',
       'files.*' => 'required|mimes:doc,docx,pdf,ppt,pptx',
       'register_dates' => 'required',
-      'category_id' => 'required',
+      'category_id' => 'required'
     ]);
 
     if ($validator->fails()) {
@@ -122,12 +124,15 @@ class DocumentController extends Controller
   public function update(Request $request, $id)
   {
     $validator = Validator::make($request->all(), [
-      'titles.*' => 'required|max:255',
-      'descriptions.*' => 'required',
+      'titles' => 'required|array',
+      'titles.*' => 'required',
+      'language_ids' => 'required|array',
       'language_ids.*' => 'required',
-      'files.*' => 'required',
-      // 'register_numbers.*' => 'required',
-      'register_dates.*' => 'required',
+      'descriptions' => 'required|array|size:2',
+      'descriptions.*' => 'required',
+      // 'files' => 'required|array|size:2',
+      'files.*' => 'required|mimes:doc,docx,pdf,ppt,pptx',
+      'register_dates' => 'required',
       'category_id' => 'required'
     ]);
 
@@ -155,11 +160,11 @@ class DocumentController extends Controller
         $file_name = 'doc_' . time();
 
         Storage::putFileAs('public/upload', $file, $file_name);
-        $file_type = $file->clientExtension();
+        // $file_type = $file->clientExtension();
 
-        if (!($file_type == 'doc' || $file_type == 'docx' || $file_type == 'pdf' || $file_type == 'ppt' || $file_type == 'pptx')) {
-          return back()->with('error', 'Supported file types:doc,docx,pdf,ppt,pptx');
-        }
+        // if (!($file_type == 'doc' || $file_type == 'docx' || $file_type == 'pdf' || $file_type == 'ppt' || $file_type == 'pptx')) {
+        //   return back()->with('error', 'Supported file types:doc,docx,pdf,ppt,pptx');
+        // }
 
         $model = Document::where('group', $id)
           ->where('language_id', $value)->get();
