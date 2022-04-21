@@ -104,8 +104,9 @@ class LinksController extends Controller
       $model->link = $request->link;
 
       if ($request->hasFile('cover')) {
-        $file_name = 'link_' . time();
-        $model->photo_url =  Storage::putFileAs('public', $request->file('cover'), $file_name);
+        $file = $request->file('cover');
+        $file_name = 'link_' . time() . '.' . $file->clientExtension();
+        $model->photo_url =  Storage::putFileAs('public', $file, $file_name);
       }
 
       $model->save();
@@ -234,9 +235,10 @@ class LinksController extends Controller
       $model->language_id = $value;
 
       if ($request->hasFile('cover')) {
-        $file_name = 'link_' . time();
+        $file = $request->file('cover');
+        $file_name = 'link_' . time() . '.' . $file->clientExtension();
         $model->photo_url =  $file_name;
-        Storage::putFileAs('public', $request->file('cover'), $file_name);
+        Storage::putFileAs('public', $file, $file_name);
       }
 
       if ($request->remove_cover == "on") {

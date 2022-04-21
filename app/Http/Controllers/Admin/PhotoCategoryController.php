@@ -67,9 +67,10 @@ class PhotoCategoryController extends Controller
       $model->group = $grp_id;
 
       if ($request->hasFile("cover")) {
-        $file_name = 'photo_category_' . time();
+        $file = $request->file('photos');
+        $file_name = 'photo_category_' . time() . '.' . $file->clientExtension();
         $model->cover = $file_name;
-        Storage::putFileAs('public/photo-categories', $request->file('cover'), $file_name);
+        Storage::putFileAs('public/photo-categories', $file, $file_name);
       } else $model->cover = "photo-category_default.png";
 
       $model->save();
@@ -110,9 +111,10 @@ class PhotoCategoryController extends Controller
       $model->Description = $request->descriptions[$key] ?? null;
 
       if ($request->hasFile("cover")) {
-        $file_name = 'photo_category_' . time();
+        $file = $request->file('photos');
+        $file_name = 'photo_category_' . time() . '.' . $file->clientExtension();
         $model->cover = $file_name;
-        Storage::putFileAs('public/photo-categories', $request->file('cover'), $file_name);
+        Storage::putFileAs('public/photo-categories', $file, $file_name);
       } else $model->cover = "photo-category_default.png";
 
       if ($request->remove_cover == "on") {

@@ -64,7 +64,7 @@ class DocumentController extends Controller
 
     foreach ($request->language_ids as $key => $value) {
       $file = $request->file("files")[$key];
-      $file_name = 'doc_' . time();
+      $file_name = 'doc_' . time() . '.' . $file->clientExtension();
       Storage::putFileAs('public/upload/', $file, $file_name);
 
       $doc = Document::create([
@@ -84,7 +84,7 @@ class DocumentController extends Controller
 
       // if ($request->hasFile("files")) {
       // $file = $request->file("files")[$key];
-      // $file_name = 'doc_' . time();
+      // $file_name = 'doc_' . time() . '.' . $file->clientExtension();
 
       // Storage::putFileAs('public/upload/', $file, $file_name);
       // $file_type = $file->extension();
@@ -108,16 +108,17 @@ class DocumentController extends Controller
 
   public function edit(Request $request, $group_id)
   {
-    // dd($group_id);
     $lang_id = current_language()->id;
-    $model  = Document::where("group", $group_id)->get();
+    // $models  = Document::where("group", $group_id)->get();
     $category = DocumentCategory::where("language_id", $lang_id)->get();
     $grp_id = $group_id;
 
+    $langs = Language::with(['documents' => fn ($query) => $query->where('group', $group_id)])->get();
     return view("admin.document.edit", compact(
-      "model",
+      // "models",
       "grp_id",
-      "category"
+      "category",
+      "langs"
     ));
   }
 
@@ -146,20 +147,21 @@ class DocumentController extends Controller
 
     foreach ($request->language_ids as $key => $value) {
       $model = Document::where("group", $group_id)
-        ->where("language_id", $value)
-        ->update([
-          'title' => $request->titles[$key],
-          'description' => $request->descriptions[$key],
-          'link' => $request->links[$key],
-          'other_link' => $request->other_link,
-          'r_number' => $request->register_numbers[$key],
-          'r_date' => $request->register_dates[$key],
-          'doc_category_id' => $request->category_id
-        ]);
+        ->where("language_id", $value)->first();
+
+      $model->update([
+        'title' => $request->titles[$key],
+        'description' => $request->descriptions[$key],
+        'link' => $request->links[$key],
+        'other_link' => $request->other_link,
+        'r_number' => $request->register_numbers[$key],
+        'r_date' => $request->register_dates[$key],
+        'doc_category_id' => $request->category_id
+      ]);
 
       if (isset($request->file("files")[$key])) {
         $file = $request->file("files")[$key];
-        $file_name = 'doc_' . time();
+        $file_name = 'doc_' . time() . '.' . $file->clientExtension();
 
         Storage::putFileAs('public/upload', $file, $file_name);
 
@@ -175,6 +177,7 @@ class DocumentController extends Controller
         //     'file_size' => $file->getSize(),
         //   ]);
 
+        // dd($file->clientExtension());
         $model->files = $file_name;
         $model->file_type = $file->clientExtension();
         $model->file_size = $file->getSize();

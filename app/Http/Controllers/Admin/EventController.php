@@ -82,9 +82,10 @@ class EventController extends Controller
     $grp_id = $this->getGroupId();
 
     if ($request->hasFile('cover')) {
-      $file_name = 'event_' . time();
+      $file = $request->file('cover');
+      $file_name = 'event_' . time() . '.' . $file->clientExtension();
 
-      Storage::putFileAs('public/events', $request->file('cover'), $file_name);
+      Storage::putFileAs('public/events', $file, $file_name);
     }
 
     foreach ($request->language_ids as $key => $value) {
@@ -154,9 +155,10 @@ class EventController extends Controller
       ]);
 
       if ($request->hasFile("cover")) {
-        $file_name = 'event_' . time();
+        $file = $request->file('cover');
+        $file_name = 'event_' . time() . '.' . $file->clientExtension();
         $model->update(['cover' => $file_name]);
-        Storage::putFileAs('public/events', $request->file('cover'), $file_name);
+        Storage::putFileAs('public/events', $file, $file_name);
       }
 
       if ($request->remove_cover == "on") {

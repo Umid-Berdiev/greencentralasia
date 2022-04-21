@@ -80,8 +80,9 @@ class PostController extends Controller
       $model->content = $request->contents[$key];
 
       if ($request->hasFile('cover')) {
-        $file_name = 'post_' . time();
-        Storage::putFileAs('public/posts', $request->file('cover'), $file_name);
+        $file = $request->file('cover');
+        $file_name = 'post_' . time() . '.' . $file->clientExtension();
+        Storage::putFileAs('public/posts', $file, $file_name);
         $model->cover = $file_name;
       } else {
         $model->cover = "null";
@@ -146,8 +147,9 @@ class PostController extends Controller
       $model->gcainfo_id = $request->country_id;
 
       if ($request->hasFile("cover")) {
-        $file_name = 'post_' . time();
-        Storage::putFileAs('public/posts', $request->file('cover'), $file_name);
+        $file = $request->file('cover');
+        $file_name = 'post_' . time() . '.' . $file->clientExtension();
+        Storage::putFileAs('public/posts', $file, $file_name);
         $model->cover = $file_name;
       }
 

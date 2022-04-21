@@ -28,7 +28,10 @@ class AppServiceProvider extends ServiceProvider
   {
     Paginator::useBootstrap();
 
-    View::composer(['gca.*', 'admin.*'], function ($view) {
+    View::composer([
+      'gca.*',
+      'admin.*'
+    ], function ($view) {
       $view->with('languages', Language::query());
     });
   }

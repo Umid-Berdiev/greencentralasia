@@ -55,10 +55,11 @@ class StatisticsController extends Controller
       $statistics->language_id = $value;
 
       if ($request->hasFile('photo_url')) {
-        $file_name = 'statistics_' . time();
-        // dd($file_name);
+
+        $file = $request->file('photo_url');
+        $file_name = 'statistics' . time() . '.' . $file->clientExtension();
         $statistics->photo_url = $file_name;
-        Storage::putFileAs('public/statistics', $request->file('photo_url'), $file_name);
+        Storage::putFileAs('public/statistics', $file, $file_name);
       } else $statistics->photo_url = "";
 
       $statistics->save();
@@ -117,9 +118,10 @@ class StatisticsController extends Controller
       $stat->name = $request->names[$key];
 
       if ($request->hasFile('photo_url')) {
-        $file_name = 'statistics_' . time();
+        $file = $request->file('cover');
+        $file_name = 'statistics_' . time() . '.' . $file->clientExtension();
         $stat->photo_url = $file_name;
-        Storage::putFileAs('public/statistics', $request->file('photo_url'), $file_name);
+        Storage::putFileAs('public/statistics', $file, $file_name);
       }
 
       $stat->update();
