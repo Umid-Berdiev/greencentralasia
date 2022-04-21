@@ -43,9 +43,11 @@ class DocumentController extends Controller
   {
     $validator = Validator::make($request->all(), [
       'titles.*' => 'required|max:255',
-      'descriptions.*' => 'required',
       'language_ids.*' => 'required',
-      'files.*' => 'required',
+      'descriptions' => 'required|array|size:2',
+      'descriptions.*' => 'required',
+      'files' => 'required|array|size:2',
+      'files.*' => 'required|mimes:doc,docx,pdf,ppt,pptx',
       'register_dates' => 'required',
       'category_id' => 'required',
     ]);
@@ -59,23 +61,6 @@ class DocumentController extends Controller
     $grp_id = $this->getGroupId();
 
     foreach ($request->language_ids as $key => $value) {
-      $file = null;
-
-      if ($request->file("files")) {
-        $file = $request->file("files")[$key];
-        $file_name = 'doc_' . time();
-
-        Storage::putFileAs('public/upload/', $file, $file_name);
-        $file_type = $file->extension();
-
-        /* SCREENSHOT OF FIRST PAGE OF DOCUMENT*/
-        //Supported formats:doc,docx,pdf,ppt,pptx
-        if (!($file_type == 'doc' || $file_type == 'docx' || $file_type == 'pdf' || $file_type == 'ppt' || $file_type == 'pptx')) {
-          return back()
-            ->with('error', 'Supported file types:doc,docx,pdf,ppt,pptx');
-        }
-      }
-
       $doc = Document::create([
         'title' => $request->titles[$key],
         'description' => $request->descriptions[$key],
@@ -84,11 +69,28 @@ class DocumentController extends Controller
         'r_date' => $request->register_dates,
         'group' => $grp_id,
         'language_id' => $value,
-        'doc_category_id' => $request->category_id,
-        'files' => $file_name,
-        'file_type' => $file->clientExtension(),
-        'file_size' => $file->getSize()
+        'doc_category_id' => $request->category_id
       ]);
+
+      if ($request->file("files")) {
+        $file = $request->file("files")[$key];
+        $file_name = 'doc_' . time();
+
+        Storage::putFileAs('public/upload/', $file, $file_name);
+        // $file_type = $file->extension();
+
+        /* SCREENSHOT OF FIRST PAGE OF DOCUMENT*/
+        //Supported formats:doc,docx,pdf,ppt,pptx
+        // if (!($file_type == 'doc' || $file_type == 'docx' || $file_type == 'pdf' || $file_type == 'ppt' || $file_type == 'pptx')) {
+        //   return back()
+        //     ->with('error', 'Supported file types:doc,docx,pdf,ppt,pptx');
+        // }
+
+        $doc->files = $file_name;
+        $doc->file_type = $file->clientExtension();
+        $doc->file_size = $file->getSize();
+        $doc->save();
+      }
     }
 
     return redirect(route('documents.edit', $grp_id))->with('success', 'Created!');
