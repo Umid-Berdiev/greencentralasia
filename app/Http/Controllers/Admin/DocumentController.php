@@ -59,12 +59,13 @@ class DocumentController extends Controller
     }
 
     $grp_id = $this->getGroupId();
+
     foreach ($request->language_ids as $key => $value) {
       $file = $request->file("files")[$key];
       $file_name = 'doc_' . time();
       Storage::putFileAs('public/upload/', $file, $file_name);
 
-      $doc = Document::create([
+      Document::create([
         'title' => $request->titles[$key],
         'description' => $request->descriptions[$key],
         'link' => $request->links,
@@ -100,7 +101,7 @@ class DocumentController extends Controller
       // }
     }
 
-    return redirect(route('documents.edit', $grp_id))->with('success', 'Created!');
+    return redirect()->view('admin.document.edit', compact('grp_id'))->with('success', 'Created!');
   }
 
   public function edit(Request $request, $id)
