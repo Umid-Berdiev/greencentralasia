@@ -41,6 +41,7 @@ class DocumentController extends Controller
 
   public function store(Request $request)
   {
+    dd($request->all());
     $validator = Validator::make($request->all(), [
       'titles.*' => 'required|max:255',
       'language_ids.*' => 'required',
