@@ -123,6 +123,7 @@ class DocumentController extends Controller
 
   public function update(Request $request, $id)
   {
+    dd($request->all());
     $validator = Validator::make($request->all(), [
       'titles' => 'required|array',
       'titles.*' => 'required',
