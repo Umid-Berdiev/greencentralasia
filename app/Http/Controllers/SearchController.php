@@ -64,7 +64,7 @@ class SearchController extends Controller
           // ->where('docs.title', '<>', '')
           ->where("docs.language_id", $lang_id)
           ->where("docs.doc_category_id", "=", $category_id)
-          // ->where("doccategories.language_id", $lang_id)
+          ->where("doccategories.language_id", $lang_id)
           ->orderBy('docs.id', 'desc')
           ->paginate(10);
 

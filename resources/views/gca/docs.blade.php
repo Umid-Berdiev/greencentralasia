@@ -5,6 +5,7 @@
   <div class="container">
     <div class="bar_inner">
       <div class="bar_inner_left">
+        @dd($table)
         @forelse($table as $value)
         <div class="item_documents">
           <div class="item_documents_left">
@@ -19,7 +20,9 @@
             @endif
           </div>
           <div class="item_documents_right">
-            <a href="{{URL(App::getLocale().'/doc/'.$value->doc_category_id.'/'.$value->group)}}">{{$value->title}}</a>
+            <a href="{{ URL(App::getLocale().'/doc/'.$value->doc_category_id.'/'.$value->group) }}">
+              {{$value->title}}
+            </a>
             <span class="date_ban">
               @lang('blog.register_date'): {{$value->r_date}} | @lang('blog.number'):{{$value->r_number}}
             </span>
