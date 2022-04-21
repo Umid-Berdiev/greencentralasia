@@ -110,6 +110,4 @@
 </div>
 <!--end .table-responsive -->
 
-
-
 @endsection
