@@ -123,7 +123,7 @@ class DocumentController extends Controller
 
   public function update(Request $request, $group_id)
   {
-    dd($request->all());
+    // dd($request->all());
 
     $validator = Validator::make($request->all(), [
       'titles' => 'required|array',
@@ -162,27 +162,27 @@ class DocumentController extends Controller
         $file_name = 'doc_' . time();
 
         Storage::putFileAs('public/upload', $file, $file_name);
-        // $file_type = $file->clientExtension();
 
-        // if (!($file_type == 'doc' || $file_type == 'docx' || $file_type == 'pdf' || $file_type == 'ppt' || $file_type == 'pptx')) {
-        //   return back()->with('error', 'Supported file types:doc,docx,pdf,ppt,pptx');
-        // }
+        // $model = Document::where('group', $group_id)
+        //   ->where('language_id', $value)->get();
 
-        $model = Document::where('group', $group_id)
-          ->where('language_id', $value)->get();
+        Storage::delete('public/upload/' . $model->files);
 
-        Storage::delete('public/upload/' . $model[0]->files);
+        // $model = Document::where("group", $group_id)
+        //   ->where("language_id", $value)->update([
+        //     'files' => $file_name,
+        //     'file_type' => $file->clientExtension(),
+        //     'file_size' => $file->getSize(),
+        //   ]);
 
-        $model = Document::where("group", $group_id)
-          ->where("language_id", $value)->update([
-            'files' => $file_name,
-            'file_type' => $file->clientExtension(),
-            'file_size' => $file->getSize(),
-          ]);
+        $model->files = $file_name;
+        $model->file_type = $file->clientExtension();
+        $model->file_size = $file->getSize();
       }
 
       if ($request->remove_cover == "on") {
         $model->cover = "null";
+        $model->save();
       }
     }
 

@@ -15,7 +15,11 @@
     <div class="card-head">
       <ul class="nav nav-tabs" data-toggle="tabs">
         @foreach($languages->get() as $key =>$language)
-        <li @if($key==0) class="active" @endif><a href="#{{ $language->id }}">{{$language->language_name}}</a></li>
+        <li @if($key==0) class="active" @endif>
+          <a href="#{{ $language->id }}">
+            {{$language->language_name}}
+          </a>
+        </li>
         @endforeach
       </ul>
     </div>

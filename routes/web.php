@@ -33,6 +33,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Http\Request;
@@ -103,10 +104,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   })->name('set-locale');
 
   Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-  Route::get('documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
+  Route::get('documents', [DocumentController::class, 'index'])->name('documents.index');
+  Route::get('documents/create', [DocumentController::class, 'create'])->name('documents.create');
+  Route::post('documents', [DocumentController::class, 'store'])->name('documents.store');
   Route::put('documents/{group_id}', [DocumentController::class, 'update'])->name('documents.update');
-  Route::delete('documents/{group_id}/destroy', [DocumentController::class, 'destroy'])->name('documents.destroy');
-  Route::resource('documents', DocumentController::class)->only(['index', 'create', 'store']);
+  Route::delete('documents/{group_id}', [DocumentController::class, 'destroy'])->name('documents.destroy');
+  Route::get('documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
+  // Route::resource('documents', DocumentController::class)->only(['index', 'create', 'store']);
   Route::resource('photos', AdminPhotoController::class);
   Route::resource('video', AdminVideoController::class);
   Route::resource('videoalbum', VideoalbumController::class);
@@ -120,6 +124,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::resource('posts', PostController::class);
   Route::resource('document-categories', DocumentCategoryController::class);
   Route::resource('statistics', StatisticsController::class);
+  Route::resource('sessions', SessionController::class);
 
   Route::get('tendercategory', [TendercategoryController::class, 'index'])->name('tendercategory');
   Route::post('tendercategory/edit', [TendercategoryController::class, 'Update']);
