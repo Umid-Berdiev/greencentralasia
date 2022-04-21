@@ -103,7 +103,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   })->name('set-locale');
 
   Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-  Route::resource('documents', DocumentController::class);
+  Route::get('documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
+  Route::put('documents/{group_id}/update', [DocumentController::class, 'update'])->name('documents.update');
+  Route::delete('documents/{group_id}/destroy', [DocumentController::class, 'destroy'])->name('documents.destroy');
+  Route::resource('documents', DocumentController::class)->only(['index', 'create', 'store']);
   Route::resource('photos', AdminPhotoController::class);
   Route::resource('video', AdminVideoController::class);
   Route::resource('videoalbum', VideoalbumController::class);

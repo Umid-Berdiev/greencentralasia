@@ -105,6 +105,7 @@ class DocumentController extends Controller
 
   public function edit(Request $request, $id)
   {
+    // dd($id);
     $lang_id = current_language()->id;
     $model  = Document::where("group", $id)->get();
     $category = DocumentCategory::where("language_id", $lang_id)->get();
@@ -116,7 +117,6 @@ class DocumentController extends Controller
       "category"
     ));
   }
-
 
   public function update(Request $request, $id)
   {
