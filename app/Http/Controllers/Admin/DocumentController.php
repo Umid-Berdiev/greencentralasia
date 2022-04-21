@@ -124,7 +124,7 @@ class DocumentController extends Controller
 
   public function update(Request $request, $group_id)
   {
-    // dd($request->all());
+    dd($request->all());
 
     $validator = Validator::make($request->all(), [
       'titles' => 'required|array',
