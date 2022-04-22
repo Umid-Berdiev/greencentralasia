@@ -26,7 +26,7 @@
         </li>
       </ul>
     </div>
-    <form class="form" enctype="multipart/form-data" id="submit-form" method="POST" @submit.prevent="(event) => {
+    <form class="form" id="submit-form" method="POST" @submit.prevent="(event) => {
       tinymce.triggerSave();
       submit(event);
     }">
