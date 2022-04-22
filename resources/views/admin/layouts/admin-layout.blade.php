@@ -422,6 +422,7 @@
 
   <!-- BEGIN JAVASCRIPT -->
   <script src="{{ asset('assets/js/vue.js')}}"></script>
+  <script src="{{ asset('project_gca/js/axios.min.js') }}"></script>
   <script src="{{ asset('assets/js/libs/utils/html5shiv.js?1403934957') }}"></script>
   <script src="{{ asset('assets/js/libs/utils/respond.min.js?1403934956') }}"></script>
 
@@ -466,8 +467,8 @@
       plugins: [
         "advlist autolink lists link image charmap print preview hr anchor pagebreak image code",
         "searchreplace wordcount visualblocks visualchars code fullscreen",
-        "insertdatetime nonbreaking save table contextmenu directionality",
-        "emoticons template paste textcolor colorpicker textpattern"
+        "insertdatetime nonbreaking save table directionality",
+        "emoticons template paste textpattern"
       ],
       toolbar1: "responsivefilemanager undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | sizeselect | fontselect | fontsizeselect",
       toolbar2: "link image media |link unlink anchor | forecolor backcolor  | print preview code  fullscreen insertdatetime ",

@@ -1,6 +1,7 @@
 @extends("admin.layouts.admin-layout")
 
 @section("content")
+
 <div class="container">
   <div class="row">
     <div class="col-auto ml-auto">
@@ -9,97 +10,60 @@
   </div>
 </div>
 
-<div class="card-body" style="background-color: white">
+<div id="doc-create" class="card-body" style="background-color: white">
+  <div v-if="errors" class="alert alert-danger small">
+    <p>Ошибки:</p>
+    <p v-for="err in errors">@{{ [...err] }}</p>
+  </div>
   <div class="col-md-12">
     <div class="card-head">
       <ul class="nav nav-tabs" data-toggle="tabs">
-        @foreach($languages->get() as $key => $language)
-        <li @if($key==0) class="active" @endif><a href="#{{$language->id}}">{{$language->language_name}}</a></li>
-        @endforeach
+        <li v-for="lang, index in languages" :class="{active: index === 0}">
+          <a :href="'#' + lang.id">@{{ lang.language_name }}</a>
+        </li>
       </ul>
     </div>
-    <form class="form" role="form" enctype="multipart/form-data" method="post" action="{{ route('documents.store') }}">
-      @csrf
+    <form class="form" enctype="multipart/form-data" method="POST" id="submit-form" @submit.prevent="(event) => {
+      tinymce.triggerSave();
+      submit(event);
+    }">
       <div class="card-body tab-content">
         <div class="form-group floating-label">
           <select class="form-control" name="category_id">
-            @foreach($category as $value)
-            <option value="{{ $value->group }}">{{ $value->category_name }}</option>
-            @endforeach
+            <option v-for="cat, index in categories" :value="cat.group">@{{ cat.category_name }}</option>
           </select>
           <label for="post_category_id">Category</label>
         </div>
-        @foreach($languages->get() as $key => $language)
-        @if($key == 0)
-        <div class="tab-pane active" id="{{$language->id}}">
-          <div class="form" role="form">
-            <input type="hidden" name="language_ids[]" value="{{$language->id}}">
-            <div class="form-group floating-label">
-              <input type="text" name="titles[]" class="form-control" id="titles">
-              <label for="titles">Title</label>
-            </div>
-            <div class="form-group floating-label">
-              <textarea name="descriptions[]" class="form-control"></textarea>
-            </div>
-            <div class="form-group floating-label">
-              <input type="file" name="files[]" class="form-control">
-            </div>
-            <div class="form-group floating-label">
-              <input type="text" name="links" class="form-control" id="links">
-              <label for="links">External link</label>
-            </div>
-            {{-- <div class="form-group floating-label">
-              <input type="text" name="other_link" class="form-control" id="other_link">
-              <label for="other_link">Other_link</label>
-            </div> --}}
-            <div class="form-group floating-label">
-              <input type="text" name="register_numbers" class="form-control" id="register_numbers">
-              <label for="register_numbers">Reference number</label>
-            </div>
-
-            <div class="form-group floating-label">
-              <input type="date" name="register_dates" class="form-control" id="register_dates"
-                value="{{ date('Y-m-d') }}">
-              <label for="register_dates">Register date</label>
+        <template v-for="lang, index in languages">
+          <input type="hidden" name="language_ids[]" :value="lang.id">
+          <div class="tab-pane" :class="{active: index === 0}" :id="lang.id">
+            <div class="">
+              <div class="form-group floating-label">
+                <input type="text" name="titles[]" class="form-control" id="titles">
+                <label for="titles">Title</label>
+              </div>
+              <div class="form-group floating-label">
+                <textarea :id="'description_' + index" name="descriptions[]" class="form-control"></textarea>
+              </div>
+              <div class="form-group floating-label">
+                <input type="file" name="files[]" class="form-control">
+              </div>
             </div>
           </div>
+        </template>
+        <div class="form-group floating-label">
+          <input type="text" name="links" class="form-control" id="links">
+          <label for="links">External link</label>
         </div>
-        @else
-        <div class="tab-pane" id="{{$language->id}}">
-          <div class="form" role="form">
-            <input type="hidden" name="language_ids[]" value="{{ $language->id }}">
-            <div class="form-group floating-label">
-              <input type="text" name="titles[]" class="form-control" id="titles">
-              <label for="titles">Title</label>
-            </div>
-
-            <div class="form-group floating-label">
-              <textarea name="descriptions[]" class="form-control"></textarea>
-            </div>
-
-            <div class="form-group floating-label">
-              <input type="file" placeholder="PDF" name="files[]" class="form-control" id="pdf">
-            </div>
-
-            {{-- <div class="form-group floating-label">
-              <input type="text" name="links[]" class="form-control" id="links">
-              <label for="links">link</label>
-            </div>
-            <div class="form-group floating-label">
-              <input type="text" name="register_numbers[]" class="form-control" id="register_numbers">
-              <label for="register_numbers">register number</label>
-            </div>
-
-            <div class="form-group floating-label">
-              <input type="date" name="register_dates[]" class="form-control" id="register_dates"
-                value="{{ date('Y-m-d') }}">
-              <label for="register_dates">register date</label>
-            </div> --}}
-
-          </div>
+        <div class="form-group floating-label">
+          <input type="text" name="register_numbers" class="form-control" id="register_numbers">
+          <label for="register_numbers">Reference number</label>
         </div>
-        @endif
-        @endforeach
+        <div class="form-group floating-label">
+          <input type="date" name="register_dates" class="form-control" id="register_dates" value="{{ date('Y-m-d') }}">
+          <label for="register_dates">Register date</label>
+        </div>
+
         <div class="card-actionbar-row">
           <a href="{{ route('documents.index') }}" class="btn btn-secondary">Back</a>
           <button type="submit" class="btn btn-primary ink-reaction">Save</button>
@@ -111,3 +75,37 @@
 <!--end .table-responsive -->
 
 @endsection
+
+@push('custom-scripts')
+<script>
+  const docCreateInstance = new Vue({
+    el:'#doc-create',
+    data() {
+      return {
+        languages: [],
+        categories: [],
+        errors: null,
+      }
+    },
+    async created() {
+      this.languages = @json($languages->get(), JSON_UNESCAPED_UNICODE);
+      this.categories = @json($categories, JSON_UNESCAPED_UNICODE);
+    },
+    methods: {
+      async submit(event) {
+        this.errors = null;
+        const formData = new FormData(event.target);
+
+        try {
+          const response = await axios.post("{{ route('documents.store') }}", formData)
+          window.location = `/admin/documents/${response.data.group_id}/edit`;
+        } catch (error) {
+          this.errors = error.response.data;
+          console.log('error while creating document: ', error.response.data);
+        }
+      }
+
+    }
+  });
+</script>
+@endpush

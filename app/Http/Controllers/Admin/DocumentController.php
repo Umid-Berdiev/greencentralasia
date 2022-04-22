@@ -9,6 +9,7 @@ use App\Models\Document;
 use App\Models\Language;
 use App\Models\DocumentCategory;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 
 class DocumentController extends Controller
 {
@@ -32,10 +33,10 @@ class DocumentController extends Controller
   public function create()
   {
     $lang_id = current_language()->id;
-    $category = DocumentCategory::where("language_id", $lang_id)->get();
+    $categories = DocumentCategory::where("language_id", $lang_id)->get();
 
     return view("admin.document.create", compact(
-      "category"
+      "categories"
     ));
   }
 
@@ -56,9 +57,7 @@ class DocumentController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return back()
-        ->withErrors($validator)
-        ->withInput();
+      return response()->json($validator->messages(), Response::HTTP_BAD_REQUEST);
     }
 
     $grp_id = $this->getGroupId();
@@ -104,28 +103,29 @@ class DocumentController extends Controller
       // }
     }
 
-    return redirect()->route('documents.edit', $grp_id)->with('success', 'Created!');
+    return response()->json(['group_id' => $grp_id], 200);
   }
 
   public function edit(Request $request, $group_id)
   {
     $lang_id = current_language()->id;
     // $models  = Document::where("group", $group_id)->get();
-    $category = DocumentCategory::where("language_id", $lang_id)->get();
+    $categories = DocumentCategory::where("language_id", $lang_id)->get();
     $grp_id = $group_id;
 
     $langs = Language::with(['documents' => fn ($query) => $query->where('group', $group_id)])->get();
+
     return view("admin.document.edit", compact(
       // "models",
       "grp_id",
-      "category",
+      "categories",
       "langs"
     ));
   }
 
   public function update(Request $request, $group_id)
   {
-    // dd($request->all());
+    // dd($request->all(), $group_id);
 
     $validator = Validator::make($request->all(), [
       'titles' => 'required|array',
@@ -141,9 +141,7 @@ class DocumentController extends Controller
     ]);
 
     if ($validator->fails()) {
-      return back()
-        ->withErrors($validator)
-        ->withInput();
+      return response()->json($validator->messages(), Response::HTTP_BAD_REQUEST);
     }
 
     foreach ($request->language_ids as $key => $value) {
@@ -190,7 +188,7 @@ class DocumentController extends Controller
       }
     }
 
-    return back()->with('success', 'Updated!');
+    return response()->json(['message' => 'success'], 200);
   }
 
   public function destroy(Request $request, $group_id)
