@@ -113,6 +113,7 @@
         const formData = new FormData(event.target);
 
         try {
+          axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
           const response = await axios.put("{{ route('documents.update', $grp_id) }}", formData);
           this.successMessage = 'Updated!';
         } catch (error) {

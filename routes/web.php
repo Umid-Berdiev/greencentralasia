@@ -107,13 +107,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   })->name('set-locale');
 
   Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-  Route::get('documents', [DocumentController::class, 'index'])->name('documents.index');
-  Route::get('documents/create', [DocumentController::class, 'create'])->name('documents.create');
-  Route::post('documents', [DocumentController::class, 'store'])->name('documents.store');
-  Route::patch('documents/{group_id}', [DocumentController::class, 'update'])->name('documents.update');
-  Route::delete('documents/{group_id}', [DocumentController::class, 'destroy'])->name('documents.destroy');
-  Route::get('documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
-  // Route::resource('documents', DocumentController::class)->only(['index', 'create', 'store']);
+  Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
+  Route::get('/documents/create', [DocumentController::class, 'create'])->name('documents.create');
+  Route::post('/documents', [DocumentController::class, 'store'])->name('documents.store');
+  Route::patch('/documents/{group_id}', [DocumentController::class, 'update'])->name('documents.update');
+  Route::delete('/documents/{group_id}', [DocumentController::class, 'destroy'])->name('documents.destroy');
+  Route::get('/documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
   Route::resource('photos', AdminPhotoController::class);
   Route::resource('video', AdminVideoController::class);
   Route::resource('videoalbum', VideoalbumController::class);
