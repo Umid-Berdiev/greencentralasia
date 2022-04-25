@@ -123,7 +123,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::resource('pages', PageController::class);
   Route::resource('languages', LanguageController::class);
   Route::resource('post-categories', PostCategoryController::class);
-  Route::resource('posts', PostController::class);
+  Route::resource('posts', PostController::class)->except('show');
   Route::resource('document-categories', DocumentCategoryController::class);
   Route::resource('statistics', StatisticsController::class);
   // Route::resource('sessions', SessionController::class);
