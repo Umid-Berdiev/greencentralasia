@@ -97,7 +97,7 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 ### admin routes
-Route::middleware(['auth'])->prefix('admin')->group(function () {
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
   Route::get('/', fn () => redirect(route('posts.index')))->name('post');
 
   Route::get('locale', function (Request $request) {
