@@ -27,6 +27,7 @@
       tinymce.triggerSave();
       submit(event);
     }">
+      @csrf
       <div class="card-body tab-content">
         <div class="form-group floating-label">
           <select class="form-control" name="category_id">
@@ -97,7 +98,7 @@
         const formData = new FormData(event.target);
 
         try {
-          const response = await axios.post("{{ route('documents.store') }}", formData)
+          const response = await axios.post("{{ route('documents.store') }}", formData);
           window.location = `/admin/documents/${response.data.group_id}/edit`;
         } catch (error) {
           this.errors = error.response.data;

@@ -125,9 +125,6 @@ class DocumentController extends Controller
 
   public function update(Request $request, $group_id)
   {
-    // mysql_set_charset('utf8');
-    dd($request->all(), $group_id);
-
     $validator = Validator::make($request->all(), [
       'titles' => 'required|array',
       'titles.*' => 'required',
@@ -136,7 +133,7 @@ class DocumentController extends Controller
       'descriptions' => 'required|array|size:2',
       'descriptions.*' => 'required',
       // 'files' => 'required|array|size:2',
-      'files.*' => 'required|mimes:doc,docx,pdf,ppt,pptx',
+      'files.*' => 'mimes:doc,docx,pdf,ppt,pptx',
       'register_dates' => 'required',
       'category_id' => 'required'
     ]);
