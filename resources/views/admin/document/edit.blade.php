@@ -114,7 +114,7 @@
         const formData = new FormData(event.target);
 
         try {
-          const response = await axios.post("{{ route('documents.update', $grp_id) }}", formData);
+          const response = await axios.put("{{ route('documents.update', $grp_id) }}", formData);
           this.successMessage = 'Updated!';
         } catch (error) {
           this.errors = error.response.data;
