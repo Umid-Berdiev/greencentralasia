@@ -111,10 +111,11 @@
         this.errors = null;
         this.successMessage = '';
         const formData = new FormData(event.target);
+        formData.append('group_id', "{{ $grp_id }}");
 
         try {
           axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-          const response = await axios.put("{{ route('documents.update', $grp_id) }}", formData);
+          const response = await axios.post("{{ route('documents.update') }}", formData);
           this.successMessage = 'Updated!';
         } catch (error) {
           this.errors = error.response.data;

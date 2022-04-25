@@ -110,7 +110,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
   Route::get('/documents/create', [DocumentController::class, 'create'])->name('documents.create');
   Route::post('/documents', [DocumentController::class, 'store'])->name('documents.store');
-  Route::patch('/documents/{group_id}', [DocumentController::class, 'update'])->name('documents.update');
+  Route::post('/documents/update', [DocumentController::class, 'update'])->name('documents.update');
   Route::delete('/documents/{group_id}', [DocumentController::class, 'destroy'])->name('documents.destroy');
   Route::get('/documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
   Route::resource('photos', AdminPhotoController::class);

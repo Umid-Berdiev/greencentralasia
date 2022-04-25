@@ -123,8 +123,9 @@ class DocumentController extends Controller
     ));
   }
 
-  public function update(Request $request, $group_id)
+  public function update(Request $request)
   {
+    // return $request->all();
     $validator = Validator::make($request->all(), [
       'titles' => 'required|array',
       'titles.*' => 'required',
@@ -144,7 +145,7 @@ class DocumentController extends Controller
 
     try {
       foreach ($request->language_ids as $key => $value) {
-        $model = Document::where("group", $group_id)
+        $model = Document::where("group", $request->group_id)
           ->where("language_id", $value)->first();
 
         $model->update([
@@ -158,7 +159,7 @@ class DocumentController extends Controller
         ]);
 
         if (isset($request->file("files")[$key])) {
-          return $request->file("files")[$key];
+          // return $request->file("files")[$key];
           $file = $request->file("files")[$key];
           $file_name = 'doc_' . time() . '.' . $file->clientExtension();
 
