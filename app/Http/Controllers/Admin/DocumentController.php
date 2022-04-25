@@ -125,7 +125,8 @@ class DocumentController extends Controller
 
   public function update(Request $request, $group_id)
   {
-    // dd($request->all(), $group_id);
+    // mysql_set_charset('utf8');
+    dd($request->all(), $group_id);
 
     $validator = Validator::make($request->all(), [
       'titles' => 'required|array',

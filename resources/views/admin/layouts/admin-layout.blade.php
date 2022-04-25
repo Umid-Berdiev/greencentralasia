@@ -1,16 +1,17 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-  <title>GCA Admin Portal</title>
-
   <!-- BEGIN META -->
   <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="your,keywords">
   <meta name="description" content="Short explanation about this website">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- END META -->
+
+  <title>GCA Admin Portal</title>
 
   <!-- BEGIN STYLESHEETS -->
   <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/theme-default/bootstrap.css?1422792965') }}" />
@@ -23,7 +24,7 @@
 
 </head>
 
-<body class="menubar-hoverable header-fixed menubar-pin ">
+<body class="menubar-hoverable header-fixed menubar-pin">
 
   <!-- BEGIN HEADER-->
 
