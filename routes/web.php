@@ -110,65 +110,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::get('documents', [DocumentController::class, 'index'])->name('documents.index');
   Route::get('documents/create', [DocumentController::class, 'create'])->name('documents.create');
   Route::post('documents', [DocumentController::class, 'store'])->name('documents.store');
-  Route::put('documents/{group_id}', function (Request $request, $group_id) {
-    $validator = Validator::make($request->all(), [
-      'titles' => 'required|array',
-      'titles.*' => 'required',
-      'language_ids' => 'required|array',
-      'language_ids.*' => 'required',
-      'descriptions' => 'required|array|size:2',
-      'descriptions.*' => 'required',
-      // 'files' => 'required|array|size:2',
-      'files.*' => 'mimes:doc,docx,pdf,ppt,pptx',
-      'register_dates' => 'required',
-      'category_id' => 'required'
-    ]);
-
-    if ($validator->fails()) {
-      return response()->json($validator->messages(), Response::HTTP_BAD_REQUEST);
-    }
-
-    try {
-      foreach ($request->language_ids as $key => $value) {
-        $model = Document::where("group", $group_id)
-          ->where("language_id", $value)->first();
-
-        $model->update([
-          'title' => $request->titles[$key],
-          'description' => $request->descriptions[$key],
-          'link' => $request->links[$key],
-          'other_link' => $request->other_link,
-          'r_number' => $request->register_numbers[$key],
-          'r_date' => $request->register_dates[$key],
-          'doc_category_id' => $request->category_id
-        ]);
-
-        if (isset($request->file("files")[$key])) {
-          $file = $request->file("files")[$key];
-          $file_name = 'doc_' . time() . '.' . $file->clientExtension();
-
-          Storage::putFileAs('public/upload', $file, $file_name);
-
-          Storage::delete('public/upload/' . $model->files);
-
-          $model->files = $file_name;
-          $model->file_type = $file->clientExtension();
-          $model->file_size = $file->getSize();
-          $model->save();
-        }
-
-        if ($request->remove_cover == "on") {
-          $model->cover = "null";
-          $model->save();
-        }
-      }
-
-      return response()->json(['message' => 'success'], 200);
-    } catch (\Throwable $th) {
-      return $th;
-    }
-  })->name('documents.update');
-  // Route::put('documents/{group_id}', [DocumentController::class, 'update'])->name('documents.update');
+  Route::patch('documents/{group_id}', [DocumentController::class, 'update'])->name('documents.update');
   Route::delete('documents/{group_id}', [DocumentController::class, 'destroy'])->name('documents.destroy');
   Route::get('documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
   // Route::resource('documents', DocumentController::class)->only(['index', 'create', 'store']);

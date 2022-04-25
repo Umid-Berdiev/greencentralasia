@@ -158,6 +158,7 @@ class DocumentController extends Controller
         ]);
 
         if (isset($request->file("files")[$key])) {
+          return $request->file("files")[$key];
           $file = $request->file("files")[$key];
           $file_name = 'doc_' . time() . '.' . $file->clientExtension();
 
@@ -179,6 +180,7 @@ class DocumentController extends Controller
           $model->files = $file_name;
           $model->file_type = $file->clientExtension();
           $model->file_size = $file->getSize();
+          $model->save();
         }
 
         if ($request->remove_cover == "on") {
