@@ -26,13 +26,13 @@
         </li>
       </ul>
     </div>
-    <form class="form" id="submit-form" method="POST" @submit.prevent="(event) => {
+    <form class="form" id="submit-form" @submit.prevent="(event) => {
       tinymce.triggerSave();
       submit(event);
     }">
+      {{-- @method('PUT')
+      @csrf --}}
       <div class="card-body tab-content">
-        {{-- @method('PUT')
-        @csrf --}}
         <template v-for="lang, index in languages">
           <div class="tab-pane" :class="{active: index === 0}" :id="lang.id">
             <input type="hidden" name="language_ids[]" :value="lang.id">
@@ -75,7 +75,6 @@
             </div>
           </div>
         </template>
-
         <div class="card-actionbar-row">
           <a href="{{ route('documents.index') }}" class="btn btn-secondary">Back</a>
           <button type="submit" class="btn btn-primary ink-reaction">Save</button>
