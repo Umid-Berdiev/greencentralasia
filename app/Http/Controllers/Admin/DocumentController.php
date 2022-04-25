@@ -125,6 +125,7 @@ class DocumentController extends Controller
 
   public function update(Request $request, $group_id)
   {
+    ini_set('post_max_size', '1G');
     $validator = Validator::make($request->all(), [
       'titles' => 'required|array',
       'titles.*' => 'required',
