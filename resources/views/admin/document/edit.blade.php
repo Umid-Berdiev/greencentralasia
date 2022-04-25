@@ -31,8 +31,6 @@
       submit(event);
     }">
       <div class="card-body tab-content">
-        @method('PUT')
-        @csrf
         <template v-for="lang, index in languages">
           <div class="tab-pane" :class="{active: index === 0}" :id="lang.id">
             <input type="hidden" name="language_ids[]" :value="lang.id">
