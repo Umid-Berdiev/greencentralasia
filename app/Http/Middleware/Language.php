@@ -18,9 +18,9 @@ class Language
   public function handle($request, Closure $next)
   {
     if ($request->locale) {
-      $locales = LanguageModel::all()->pluck('language_prefix');
+      $locales = LanguageModel::all()->pluck('language_prefix')->toArray();
 
-      if (in_array($request->locale, [...$locales])) {
+      if (in_array($request->locale, $locales)) {
         app()->setLocale($request->locale);
         return $next($request);
       } else {
