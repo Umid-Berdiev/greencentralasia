@@ -51,7 +51,7 @@
           </td>
           <td>{{ $page->title }}</td>
           <td>{{ $page->decription }}</td>
-          <td>
+          <td style="display: flex; gap:0.5rem;">
             <form style="display: inline;" action="{{ route('posts.edit', $page->group) }}" method="get">
               <button>
                 <i class="fa fa-edit"></i>

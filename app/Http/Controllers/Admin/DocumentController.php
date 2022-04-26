@@ -113,7 +113,9 @@ class DocumentController extends Controller
     $categories = DocumentCategory::where("language_id", $lang_id)->get();
     $grp_id = $group_id;
 
-    $langs = Language::with(['documents' => fn ($query) => $query->where('group', $group_id)])->get();
+    $langs = Language::with(['documents' => function ($query) use ($group_id) {
+      $query->where('group', $group_id);
+    }])->get();
 
     return view("admin.document.edit", compact(
       // "models",
