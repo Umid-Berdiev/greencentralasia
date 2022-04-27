@@ -7,10 +7,10 @@
     <div class="swiper-wrapper mb-5">
       @foreach($statisticas as $item)
       <div class="swiper-slide mx-3" data-fancybox=":gallery"
-        data-src="{{ asset('storage/statistics/' . $item->photo_url) }}">
+        data-src="{{ asset('/storage/statistics/' . $item->photo_url) }}">
         <a href="#" class="report_main_item">
           <div>
-            <img src="{{URL('storage/statistics/'.$item->photo_url)}}" alt="stat1 image" width="400" height="300">
+            <img src="{{ URL('/storage/statistics/'.$item->photo_url) }}" alt="stat1 image" width="400" height="300">
           </div>
           <p style="width:400px;">{{ $item->name }}</p>
         </a>

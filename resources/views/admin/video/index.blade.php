@@ -49,7 +49,7 @@
           <td>{{ $page->description }}</td>
           {{-- <td>{{ $page->category->title }}</td> --}}
           <td>
-            <img src="{{ asset('storage/videos/' . $page->cover) }}" alt="Cover image" width="100">
+            <img src="{{ asset('/storage/videos/' . $page->cover) }}" alt="Cover image" width="100">
           </td>
           <td>
             <form style="display: inline;" action="{{ route('video.edit', $page->group) }}" method="get">

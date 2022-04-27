@@ -10,12 +10,12 @@
           <div class="item_documents_left">
             @if($value->file_type=="pdf")
             <a href="{{URL(App::getLocale().'/downloads?type=doc&id='.$value->id)}}">
-              <embed src="{{ URL('storage/upload/'.$value->files) }}" width="320" height="300" />
+              <embed src="{{ URL('/storage/upload/'.$value->files) }}" width="320" height="300" />
             </a>
             @elseif($value->file_type=="doc"||$value->file_type=="docx")
-            <img src="{{URL('storage/images/word.jpeg')}}" alt="" width="320" height="300">
+            <img src="{{ URL('/storage/images/word.jpeg') }}" alt="" width="320" height="300">
             @else
-            <img src="{{URL('storage/images/ppt.png')}}" alt="" width="320" height="300">
+            <img src="{{ URL('/storage/images/ppt.png') }}" alt="" width="320" height="300">
             @endif
           </div>
           <div class="item_documents_right">

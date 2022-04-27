@@ -46,9 +46,6 @@
           <td>{{ $key + 1 }}</td>
           <td>{{ $page->title }}</td>
           <td>{{ $page->category->category_name }}</td>
-          {{-- <td>
-            <img src="{{ 'storage/pages/' . $page->photo_url }}" alt="">
-          </td> --}}
           <td>
             <form style="display: inline;" action="{{ route('pages.edit', $page->page_group_id) }}" method="get">
               <button>

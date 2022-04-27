@@ -27,16 +27,6 @@
       @method('put')
 
       <div class="card-body tab-content">
-        {{-- @if ($page_group->photo_url && $page_group->photo_url != "null")
-        <img height="100" src="{{ asset('storage/pages/' . $page_group->photo_url) }}" alt="page-photo">
-        <input type="checkbox" name="remove_cover" id="remove-cover">
-        <label for="remove-cover">Remove cover</label>
-        @else <span>No image</span>
-        @endif --}}
-        {{-- <div class="form-group floating-label">
-          <input type="file" name="photos" value="{{ $page_group->photo_url }}" class="form-control" accept="image/*">
-          <input type="hidden" name="page_group_id" value="{{ $page_group->id }}">
-        </div> --}}
         <div class="form-group">
           <select class="form-control" id="select1" name="category_id">
             @foreach($categories as $key =>$categories)

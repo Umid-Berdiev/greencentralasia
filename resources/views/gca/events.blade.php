@@ -118,7 +118,7 @@
               {{ $event->category->category_name }}
               @endif
             </small>
-            <img src="{{ asset('storage/events/' . $event->cover) }}" alt="event_cover">
+            <img src="{{ asset('/storage/events/' . $event->cover) }}" alt="event_cover">
           </div>
         </div>
       </div>

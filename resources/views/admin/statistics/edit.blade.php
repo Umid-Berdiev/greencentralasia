@@ -44,7 +44,7 @@
             <input type="file" name="photo_url" class="form-control" id="cover">
           </div>
           @if ($val->photo_url && $val->photo_url != "null")
-          <img src="{{ asset('storage/statistics/' . $val->photo_url) }}" width="100" />
+          <img src="{{ asset('/storage/statistics/' . $val->photo_url) }}" width="100" />
           <input type="checkbox" name="remove_cover" id="remove-cover">
           <label for="remove-cover">Remove photo</label>
           @else <span>No image</span>

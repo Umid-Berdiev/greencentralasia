@@ -48,7 +48,7 @@
             <td>{{ $page->name }}</td>
             <td>
               {{-- @if ($page->photo_url != "null") --}}
-              <img alt="Photo" class="img-responsive" src="{{ asset('storage/statistics/' . $page->photo_url) }}"
+              <img alt="Photo" class="img-responsive" src="{{ asset('/storage/statistics/' . $page->photo_url) }}"
                 width="100">
               {{-- @endif --}}
             </td>

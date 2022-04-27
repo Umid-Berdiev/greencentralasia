@@ -48,7 +48,7 @@
           <td>{{$page->description}}</td>
           <td>{{$page->title}}</td>
           <td>
-            <img src="{{ asset('storage/photos/' . $page->cover) }}" alt="category's cover image" width="100">
+            <img src="{{ asset('/storage/photos/' . $page->cover) }}" alt="category's cover image" width="100">
           </td>
           <td>
             <form style="display: inline;" action="{{ route('photos.edit', $page->group) }}" method="get">

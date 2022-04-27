@@ -45,7 +45,7 @@
               {{-- <input type="text" value="document.getElementById('cover').value"> --}}
             </div>
             @if ($val->cover && $val->cover != "null")
-            <img src="{{ asset('storage/video-categories/' . $val->cover) }}" width="100px" />
+            <img src="{{ asset('/storage/video-categories/' . $val->cover) }}" width="100px" />
             <input type="checkbox" name="remove_cover" id="remove-cover">
             <label for="remove-cover">Remove cover</label>
             @else <span>No image</span>
