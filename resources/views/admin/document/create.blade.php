@@ -23,11 +23,10 @@
         </li>
       </ul>
     </div>
-    <form class="form" method="POST" id="submit-form" @submit.prevent="(event) => {
+    <form class="form" id="submit-form" @submit.prevent="(event) => {
       tinymce.triggerSave();
       submit(event);
     }">
-      @csrf
       <div class="card-body tab-content">
         <div class="form-group floating-label">
           <select class="form-control" name="category_id">
