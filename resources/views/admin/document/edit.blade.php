@@ -26,12 +26,10 @@
         </li>
       </ul>
     </div>
-    <form class="form" id="submit-form" method="POST" @submit.prevent="(event) => {
+    <form class="form" id="submit-form" @submit.prevent="(event) => {
       tinymce.triggerSave();
       submit(event);
     }">
-      @csrf
-      @method('PUT')
       <div class="card-body tab-content">
         <template v-for="lang, index in languages">
           <div class="tab-pane" :class="{active: index === 0}" :id="lang.id">
@@ -114,6 +112,7 @@
         const formData = new FormData(event.target);
 
         try {
+          axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
           const response = await axios.put("{{ route('documents.update', $grp_id) }}", formData)
           this.successMessage = 'Updated!';
         } catch (error) {
