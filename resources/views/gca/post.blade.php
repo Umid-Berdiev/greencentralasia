@@ -15,7 +15,7 @@
 
           <span class="date_ban">{{ \Carbon\Carbon::parse($news->datetime)->format('d.m.Y') }}</span>
           <h1>{{$news->title}}</h1>
-          <img src="{{ asset('storage/posts/' . $news->cover) }}" alt="{{ $news->title }}">
+          <img src="{{ asset('/storage/posts/' . $news->cover) }}" alt="{{ $news->title }}">
           {!! $news->content !!}
         </div>
       </div>
@@ -28,7 +28,7 @@
           <a href="{{ url(app()->getLocale() . '/posts/' . $value->category_group_id . '/' .$value->group)  }}"
             class="news_item {{ $value->group == $news->group ? 'active' : ''}}">
             @if($value->cover!=null)
-            <img src="{{ asset('storage/posts/' . $value->cover) }}">
+            <img src="{{ asset('/storage/posts/' . $value->cover) }}">
             @endif
             <div>
               <span>{{ \Carbon\Carbon::parse($value->created_at)->format('d.m.Y') }}</span>
@@ -42,7 +42,7 @@
           @foreach($events as $value)
           {{-- @dd($value) --}}
           <a href="{{ url(app()->getLocale() . '/event?id=' . $value->id) }}" class="news_item">
-            <img src="{{ asset('storage/events/' . $value->cover) }}">
+            <img src="{{ asset('/storage/events/' . $value->cover) }}">
             <div>
               <span>{{ \Carbon\Carbon::parse($value->created_at)->format('d.m.Y') }}</span>
               <p>{{$value->title}}</p>

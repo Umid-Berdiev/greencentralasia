@@ -10,7 +10,7 @@
         </div>
         <div class="events_bottom">
           <a href="{{ url(app()->getLocale().'/events') }}" class="link_template">@lang('blog.all_events')</a>
-          
+
         </div>
       </div>
       <div class="col-lg-6 col-sm-8 right_cal">
@@ -39,7 +39,7 @@
               {{ $event->title }}
               <div class="new_event_date">{{ $event->category->category_name }}</div>
             </div>
-            <img src="{{ asset('storage/events/' . $event->cover) }}" alt="event cover">
+            <img src="{{ asset('/storage/events/' . $event->cover) }}" alt="event cover">
           </div>
         </a>
         @endforeach

@@ -14,9 +14,11 @@
 <section class="contact_inner">
   <div class="container">
     <h2 class="title">@lang('blog.map_point')</h2>
-    <div id="map"><iframe
+    <div id="map">
+      <iframe
         src="https://yandex.ru/map-widget/v1/?um=constructor%3A458036ea9a31a6999429075e1efd9d7f6ebd5b2b42325b43324932b42c5889b5&amp;source=constructor"
-        width="1105" height="500" frameborder="0"></iframe></div>
+        width="1105" height="500" frameborder="0"></iframe>
+    </div>
     @if ($errors->any())
     <div class="alert alert-danger">
       <ul>

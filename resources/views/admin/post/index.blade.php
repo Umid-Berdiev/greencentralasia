@@ -46,7 +46,7 @@
           <td>{{ $key + 1 }}</td>
           <td>
             @if ($page->cover != "null")
-            <img alt="cover" class="img-responsive" width="100" src="{{ asset('storage/posts/' . $page->cover) }}">
+            <img alt="cover" class="img-responsive" width="100" src="{{ asset('/storage/posts/' . $page->cover) }}">
             @endif
           </td>
           <td>{{ $page->title }}</td>

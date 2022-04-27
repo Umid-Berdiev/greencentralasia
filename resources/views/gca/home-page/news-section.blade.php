@@ -7,7 +7,7 @@
         <a href="{{ url(app()->getLocale() . '/posts/' . $item->category_group_id . '/' . $item->group) }}"
           class="card">
           <div class="card-img">
-            <img src="{{ asset('storage/posts/' . $item->cover) }}" alt="News image">
+            <img src="{{ asset('/storage/posts/' . $item->cover) }}" alt="News image">
           </div>
           <div class=" auto-height card-body">
             <span class="card_time">{{ \Carbon\Carbon::parse($item->datetime)->format('d.m.Y') }}</span>

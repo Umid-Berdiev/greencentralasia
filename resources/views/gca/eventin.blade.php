@@ -16,7 +16,7 @@
           <span class="date_ban">{{ $event->datestart->format('d.m.Y') }} -
             {{ $event->dateend->format('d.m.Y') }} </span>
           <h1>{{ $event->title }}</h1>
-          <img src="{{ asset('storage/events/' . $event->cover) }}" alt="Event cover image">
+          <img src="{{ asset('/storage/events/' . $event->cover) }}" alt="Event cover image">
           <p>{{ $event->description }}</p>
           <p>{!! $event->content !!}</p>
         </div>
@@ -26,7 +26,7 @@
           <h3>@lang('blog.events')</h3>
           @foreach($upcoming_events as $item)
           <a href="{{ url(app()->getLocale() . '/event?id=' . $item->id) }}" class="news_item">
-            <img src="{{ asset('storage/events/' . $item->cover) }}" alt="Event cover image">
+            <img src="{{ asset('/storage/events/' . $item->cover) }}" alt="Event cover image">
             <div>
               {{-- < span>{{ $item->datestart->format('d.m.Y') }} - --}}
                 {{ $item->dateend->format('d.m.Y') }}</>

@@ -46,7 +46,7 @@
               {{ $event->title }}
               <div class="new_event_date">{{ $event->category->category_name }}</div>
             </div>
-            <img src="{{ asset('storage/events/' . $event->cover) }}" alt="event cover">
+            <img src="{{ asset('/storage/events/' . $event->cover) }}" alt="event cover">
           </div>
         </a>
         @endforeach
@@ -57,7 +57,6 @@
     </div>
   </div>
 </section>
-
 <section class="event_inner">
   <div class="container">
     <div class="row mb-3">
@@ -131,6 +130,7 @@
   </div>
 </section>
 @endsection
+
 @push('scripts')
 <script type="text/javascript">
   $('#datepicker').datepicker({
