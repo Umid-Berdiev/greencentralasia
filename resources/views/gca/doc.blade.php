@@ -28,8 +28,9 @@
                 <h6>
                   <a href="{{URL(App::getLocale().'/downloads?type=doc&id='.$table->id)}}">
                     <img src="{{ URL('/storage/images/word.jpeg') }}" alt="cover image doc inside">
-                    @lang('blog.download')
-                    ({{ round($table->file_size/1024) }} KB)
+                    <span>
+                      @lang('blog.download') ({{ round($table->file_size/1024) }} KB)
+                    </span>
                   </a>
                 </h6>
               </div>
@@ -38,8 +39,9 @@
                 <h6>
                   <a href="{{URL(App::getLocale().'/downloads?type=doc&id='.$table->id)}}">
                     <embed src="{{ URL('/storage/upload/'.$table->files) }}" width="320" height="300" />
-                    @lang('blog.download')
-                    ({{ round($table->file_size/1024) }} KB)
+                    <span>
+                      @lang('blog.download') ({{ round($table->file_size/1024) }} KB)
+                    </span>
                   </a>
                 </h6>
               </div>
