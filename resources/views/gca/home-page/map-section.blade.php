@@ -4,7 +4,7 @@
       <div class="col-md-6" v-if="gca" style="min-height: 60vh">
         <span v-if="news && news.length > 0" class="template_span">@lang('blog.news_events')</span>
         <div style="padding: 15px 30px;margin-bottom:0;" class="new_event" v-for="item in news">
-          <img :src="'/storage/posts/' + item.cover">
+          <img :src="'/storage/posts/' + item.cover" style="left: -7rem">
           <div class="new_event_date">
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -32,7 +32,6 @@
       </div>
     </div>
 
-
     {{-- MODALS --}}
     <div class="container">
       <!-- Button to Open the Modal -->
@@ -42,7 +41,7 @@
 
       <!-- The Modal -->
       <div class="modal fade" id="myModal">
-        <div class="modal-dialog " style="max-width: 80%;">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
 
             <!-- Modal Header -->
@@ -60,16 +59,11 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
-
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
-
-
 </section>
 
 @push('scripts')

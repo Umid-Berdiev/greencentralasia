@@ -13,15 +13,14 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-sm-4 left_cal">
-        <span class="template_span">@lang('blog.coming_events')</span>
+        <span class="template_span">@lang('events.events_on_calendar')</span>
         <div class="bts_cal">
           <div id="datepicker"></div>
           <input type="hidden" id="my_hidden_input">
-
         </div>
       </div>
       <div class="col-lg-6 col-sm-8 right_cal">
-        @foreach ($upcoming_events as $event)
+        @forelse ($upcoming_events as $event)
         <a href="{{ url(app()->getLocale() . '/event?id=' . $event->id) }}" style="text-decoration:unset">
           <div class="new_event">
             <div class="new_event_date">
@@ -49,7 +48,11 @@
             <img src="{{ asset('/storage/events/' . $event->cover) }}" alt="event cover">
           </div>
         </a>
-        @endforeach
+        @empty
+        <div>
+          @lang('events.there_is_no_any_upcoming_events_yet')
+        </div>
+        @endforelse
         <div>
           {{ $upcoming_events->links() }}
         </div>

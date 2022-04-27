@@ -15,5 +15,7 @@ return [
   'categories' => 'Категория',
   'all' => 'Все',
   'filter' => 'Фильтр',
+  'events_on_calendar' => 'Мероприятия в календаре',
+  'there_is_no_any_upcoming_events_yet' => 'Предстоящих событий пока нет!',
 
 ];
