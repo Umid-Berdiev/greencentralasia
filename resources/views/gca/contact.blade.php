@@ -85,15 +85,12 @@
 
       </div>
       <div class="form-group">
-        <div class="g-recaptcha" data-sitekey="6LcdhZ4aAAAAAAMRAs3ls-W3jF-B74FuXt-VA0IB" data-callback="enable">
-
-        </div>
+        <div class="g-recaptcha" data-sitekey="6LcdhZ4aAAAAAAMRAs3ls-W3jF-B74FuXt-VA0IB" data-callback="enable"></div>
         @if ($errors->has('g-recaptcha-response'))
         <span class="invalid-feedback " style="display:block">
           <strong class="text-danger">{{ $errors->first('g-recaptcha-response') }}</strong>
           @endif
         </span>
-
       </div>
       <button type="submit" class="btn link_template btn-danger" disabled id="btn">@lang('blog.form_btn_send')</button>
     </form>

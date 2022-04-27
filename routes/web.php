@@ -36,11 +36,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\VideoController;
-use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,10 +94,8 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 ### admin routes
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
-  Route::get('/', function () {
-    return redirect()->route('posts.index');
-  })->name('post');
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+  Route::get('/', fn () => redirect(route('posts.index')))->name('post');
 
   Route::get('locale', function (Request $request) {
     // dd($request->all());
@@ -109,12 +104,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
   })->name('set-locale');
 
   Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-  Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
-  Route::get('/documents/create', [DocumentController::class, 'create'])->name('documents.create');
-  Route::post('/documents', [DocumentController::class, 'store'])->name('documents.store');
-  Route::post('/documents/update', [DocumentController::class, 'update'])->name('documents.update');
-  Route::delete('/documents/{group_id}', [DocumentController::class, 'destroy'])->name('documents.destroy');
-  Route::get('/documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
+  Route::get('documents', [DocumentController::class, 'index'])->name('documents.index');
+  Route::get('documents/create', [DocumentController::class, 'create'])->name('documents.create');
+  Route::post('documents', [DocumentController::class, 'store'])->name('documents.store');
+  Route::put('documents/{group_id}', [DocumentController::class, 'update'])->name('documents.update');
+  Route::delete('documents/{group_id}', [DocumentController::class, 'destroy'])->name('documents.destroy');
+  Route::get('documents/{group_id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
+  // Route::resource('documents', DocumentController::class)->only(['index', 'create', 'store']);
   Route::resource('photos', AdminPhotoController::class);
   Route::resource('video', AdminVideoController::class);
   Route::resource('videoalbum', VideoalbumController::class);
@@ -125,7 +121,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
   Route::resource('pages', PageController::class);
   Route::resource('languages', LanguageController::class);
   Route::resource('post-categories', PostCategoryController::class);
-  Route::resource('posts', PostController::class)->except('show');
+  Route::resource('posts', PostController::class);
   Route::resource('document-categories', DocumentCategoryController::class);
   Route::resource('statistics', StatisticsController::class);
   // Route::resource('sessions', SessionController::class);

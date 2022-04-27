@@ -30,9 +30,8 @@
       tinymce.triggerSave();
       submit(event);
     }">
-      {{-- @method('PUT')
-      @csrf --}}
       <div class="card-body tab-content">
+        <input type="hidden" name="_method" value="PUT">
         <template v-for="lang, index in languages">
           <div class="tab-pane" :class="{active: index === 0}" :id="lang.id">
             <input type="hidden" name="language_ids[]" :value="lang.id">
@@ -55,7 +54,7 @@
               <div class="form-group floating-label">
                 <input type="file" name="files[]" class="form-control">
                 <span>
-                  @{{ lang.documents[0].files }}
+                  {{ $lang.documents[0].files }}
                 </span>
               </div>
             </div>
@@ -75,6 +74,7 @@
             </div>
           </div>
         </template>
+
         <div class="card-actionbar-row">
           <a href="{{ route('documents.index') }}" class="btn btn-secondary">Back</a>
           <button type="submit" class="btn btn-primary ink-reaction">Save</button>
@@ -111,11 +111,9 @@
         this.errors = null;
         this.successMessage = '';
         const formData = new FormData(event.target);
-        formData.append('group_id', "{{ $grp_id }}");
 
         try {
-          axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-          const response = await axios.post("{{ route('documents.update') }}", formData);
+          const response = await axios.put("{{ route('documents.update', $grp_id) }}", formData)
           this.successMessage = 'Updated!';
         } catch (error) {
           this.errors = error.response.data;

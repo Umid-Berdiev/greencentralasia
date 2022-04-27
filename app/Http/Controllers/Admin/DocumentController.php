@@ -113,9 +113,7 @@ class DocumentController extends Controller
     $categories = DocumentCategory::where("language_id", $lang_id)->get();
     $grp_id = $group_id;
 
-    $langs = Language::with(['documents' => function ($query) use ($group_id) {
-      $query->where('group', $group_id);
-    }])->get();
+    $langs = Language::with(['documents' => fn ($query) => $query->where('group', $group_id)])->get();
 
     return view("admin.document.edit", compact(
       // "models",
@@ -125,9 +123,8 @@ class DocumentController extends Controller
     ));
   }
 
-  public function update(Request $request)
+  public function update(Request $request, $group_id)
   {
-    // return $request->all();
     $validator = Validator::make($request->all(), [
       'titles' => 'required|array',
       'titles.*' => 'required',
@@ -147,7 +144,7 @@ class DocumentController extends Controller
 
     try {
       foreach ($request->language_ids as $key => $value) {
-        $model = Document::where("group", $request->group_id)
+        $model = Document::where("group", $group_id)
           ->where("language_id", $value)->first();
 
         $model->update([
@@ -161,29 +158,16 @@ class DocumentController extends Controller
         ]);
 
         if (isset($request->file("files")[$key])) {
-          // return $request->file("files")[$key];
           $file = $request->file("files")[$key];
           $file_name = 'doc_' . time() . '.' . $file->clientExtension();
 
           Storage::putFileAs('public/upload', $file, $file_name);
 
-          // $model = Document::where('group', $group_id)
-          //   ->where('language_id', $value)->get();
-
           Storage::delete('public/upload/' . $model->files);
 
-          // $model = Document::where("group", $group_id)
-          //   ->where("language_id", $value)->update([
-          //     'files' => $file_name,
-          //     'file_type' => $file->clientExtension(),
-          //     'file_size' => $file->getSize(),
-          //   ]);
-
-          // dd($file->clientExtension());
           $model->files = $file_name;
           $model->file_type = $file->clientExtension();
           $model->file_size = $file->getSize();
-          $model->save();
         }
 
         if ($request->remove_cover == "on") {
