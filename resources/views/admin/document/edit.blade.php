@@ -54,7 +54,7 @@
               <div class="form-group floating-label">
                 <input type="file" name="files[]" class="form-control">
                 <span>
-                  {{ $lang.documents[0].files }}
+                  @{{ lang.documents[0].files }}
                 </span>
               </div>
             </div>
