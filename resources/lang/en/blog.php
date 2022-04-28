@@ -175,5 +175,6 @@ The target group of the Initiative consists of the foreign ministries (and, thro
       'cookie_text' => 'Our website uses cookies to store some technically necessary data about your user session on the browser. These data are temporary and will be deleted automatically in a very short time after you close our website. The information does not directly identify you, but it can give you a more personalized and smooth web experience by recognizing your preferences or your device. By clicking “Accept all cookies”, you agree the Website can store technically necessary cookies on your device. You can revoke your consent at any time using the link on the footer of the website.',
       'cookie_button_text' => 'Accept all cookies',
       'today_users' => 'today\'s visitors',
-      'online_users' => 'online visitors'
+      'online_users' => 'online visitors',
+      'read_on_lexuz' => 'Read on Lex.uz site',
     ];
