@@ -14,9 +14,14 @@ class Session extends Model
 
   public static function online()
   {
-    // $today = Carbon::today()->diffInMinutes(Carbon::now());
+    $now = Carbon::now();
+    $three_minutes_ago = $now->subMinutes(3)->format('Y-m-d H:i:s');
 
-    $result = Tracker::sessions(3)->where('is_robot', 0)->count();
+    $result = DB::connection('tracker')
+      ->table('tracker_sessions')
+      ->where('is_robot', 0)
+      ->where('created_at', '>=', $three_minutes_ago)
+      ->count();
 
     return $result;
   }
