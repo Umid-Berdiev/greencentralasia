@@ -26,7 +26,7 @@ class Footer extends Component
    */
   public function render()
   {
-    $online_visitors = Tracker::onlineUsers()->count(); // defaults to 3 minutes
+    $online_visitors = Session::online(); // defaults to 3 minutes
     $today_visitors = Session::today();
 
     return view('components.partials.footer', compact('online_visitors', 'today_visitors'));

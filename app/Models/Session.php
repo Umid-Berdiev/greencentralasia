@@ -12,6 +12,15 @@ class Session extends Model
 {
   use HasFactory;
 
+  public static function online()
+  {
+    // $today = Carbon::today()->diffInMinutes(Carbon::now());
+
+    $result = Tracker::sessions(3)->where('is_robot', 0)->count();
+
+    return $result;
+  }
+
   public static function today()
   {
     $today = Carbon::today()->diffInMinutes(Carbon::now());
