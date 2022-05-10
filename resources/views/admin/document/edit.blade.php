@@ -114,6 +114,7 @@
 
         try {
           const response = await axios.post("{{ route('documents.update', $grp_id) }}", formData)
+          this.languages = response.data.langs
           this.successMessage = 'Updated!';
         } catch (error) {
           this.errors = error.response.data;

@@ -139,7 +139,6 @@ class DocumentController extends Controller
         Storage::delete('public/upload/' . $model->files);
         $file = $request->file("files")[$key];
         $file_name = 'doc_' . time() . '.' . $file->clientExtension();
-
         Storage::putFileAs('public/upload', $file, $file_name);
 
         $model->files = $file_name;
@@ -149,11 +148,12 @@ class DocumentController extends Controller
 
       if ($request->remove_cover == "on") {
         $model->cover = "null";
-        $model->save();
       }
+      $model->save();
     }
+    $langs = Language::with(['documents' => fn ($query) => $query->where('group', $group_id)])->get();
 
-    return response()->json(['message' => 'success'], 200);
+    return response()->json(['message' => 'success', 'langs' => $langs], 200);
   }
 
   public function destroy(Request $request, $group_id)
