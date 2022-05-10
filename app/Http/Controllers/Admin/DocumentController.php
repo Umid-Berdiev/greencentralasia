@@ -73,34 +73,13 @@ class DocumentController extends Controller
         'link' => $request->links,
         'r_number' => $request->register_numbers,
         'r_date' => $request->register_dates,
+        'doc_category_id' => $request->category_id,
         'group' => $grp_id,
         'language_id' => $value,
-        'doc_category_id' => $request->category_id,
         'files' => $file_name,
         'file_type' => $file->clientExtension(),
         'file_size' => $file->getSize()
       ]);
-      // dd($doc);
-
-      // if ($request->hasFile("files")) {
-      // $file = $request->file("files")[$key];
-      // $file_name = 'doc_' . time() . '.' . $file->clientExtension();
-
-      // Storage::putFileAs('public/upload/', $file, $file_name);
-      // $file_type = $file->extension();
-
-      /* SCREENSHOT OF FIRST PAGE OF DOCUMENT*/
-      //Supported formats:doc,docx,pdf,ppt,pptx
-      // if (!($file_type == 'doc' || $file_type == 'docx' || $file_type == 'pdf' || $file_type == 'ppt' || $file_type == 'pptx')) {
-      //   return back()
-      //     ->with('error', 'Supported file types:doc,docx,pdf,ppt,pptx');
-      // }
-
-      // $doc->files = $file_name;
-      // $doc->file_type = $file->clientExtension();
-      // $doc->file_size = $file->getSize();
-      // $doc->save();
-      // }
     }
 
     return response()->json(['group_id' => $grp_id], 200);
@@ -142,44 +121,39 @@ class DocumentController extends Controller
       return response()->json($validator->messages(), Response::HTTP_BAD_REQUEST);
     }
 
-    try {
-      foreach ($request->language_ids as $key => $value) {
-        $model = Document::where("group", $group_id)
-          ->where("language_id", $value)->first();
+    foreach ($request->language_ids as $key => $value) {
+      $model = Document::where("group", $group_id)
+        ->where("language_id", $value)->first();
 
-        $model->update([
-          'title' => $request->titles[$key],
-          'description' => $request->descriptions[$key],
-          'link' => $request->links[$key],
-          'other_link' => $request->other_link,
-          'r_number' => $request->register_numbers[$key],
-          'r_date' => $request->register_dates[$key],
-          'doc_category_id' => $request->category_id
-        ]);
+      $model->update([
+        'title' => $request->titles[$key],
+        'description' => $request->descriptions[$key],
+        'link' => $request->links[$key],
+        'r_number' => $request->register_numbers[$key],
+        'r_date' => $request->register_dates[$key],
+        'doc_category_id' => $request->category_id
+        // 'other_link' => $request->other_link,
+      ]);
 
-        if (isset($request->file("files")[$key])) {
-          $file = $request->file("files")[$key];
-          $file_name = 'doc_' . time() . '.' . $file->clientExtension();
+      if (isset($request->file("files")[$key])) {
+        Storage::delete('public/upload/' . $model->files);
+        $file = $request->file("files")[$key];
+        $file_name = 'doc_' . time() . '.' . $file->clientExtension();
 
-          Storage::putFileAs('public/upload', $file, $file_name);
+        Storage::putFileAs('public/upload', $file, $file_name);
 
-          Storage::delete('public/upload/' . $model->files);
-
-          $model->files = $file_name;
-          $model->file_type = $file->clientExtension();
-          $model->file_size = $file->getSize();
-        }
-
-        if ($request->remove_cover == "on") {
-          $model->cover = "null";
-          $model->save();
-        }
+        $model->files = $file_name;
+        $model->file_type = $file->clientExtension();
+        $model->file_size = $file->getSize();
       }
 
-      return response()->json(['message' => 'success'], 200);
-    } catch (\Throwable $th) {
-      return $th;
+      if ($request->remove_cover == "on") {
+        $model->cover = "null";
+        $model->save();
+      }
     }
+
+    return response()->json(['message' => 'success'], 200);
   }
 
   public function destroy(Request $request, $group_id)
