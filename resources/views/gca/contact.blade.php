@@ -67,7 +67,7 @@
               fill="#2DA37D"></path>
           </svg>
           <span>@lang('blog.address'):</span>
-          <a href="" onclick="return false;">
+          <a href="javascript:;">
             @lang('blog.address')
           </a>
         </div>

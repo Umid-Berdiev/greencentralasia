@@ -24,14 +24,31 @@
               </svg>
               info@greencentralasia.org
             </a>
-            <a href="" onclick="return false;">
+            <a href="javascript:;">
               <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M3.12695 0C1.39962 0 0 1.394 0 3.1207C0 6.10632 3.12695 10 3.12695 10C3.12695 10 6.25391 6.10569 6.25391 3.1207C6.25391 1.39462 4.85428 0 3.12695 0ZM3.12695 4.8474C2.67912 4.8474 2.24963 4.6695 1.93297 4.35284C1.6163 4.03617 1.4384 3.60668 1.4384 3.15885C1.4384 2.71102 1.6163 2.28153 1.93297 1.96486C2.24963 1.64819 2.67912 1.47029 3.12695 1.47029C3.57479 1.47029 4.00428 1.64819 4.32094 1.96486C4.63761 2.28153 4.81551 2.71102 4.81551 3.15885C4.81551 3.60668 4.63761 4.03617 4.32094 4.35284C4.00428 4.6695 3.57479 4.8474 3.12695 4.8474Z"
                   fill="#2DA37D" />
               </svg>
-              @lang('blog.address')</a>
-
+              @lang('blog.address')
+            </a>
+          </div>
+          <br />
+          <div class="abouts">
+            <a href="{{ url(app()->getLocale() . '/registration-information') }}" style="
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 16px;
+                color: #ffffff;
+                margin-bottom: 15px;
+                display: inline-flex;
+                margin-bottom: 15px;
+                transition: all 0.3s;
+                text-decoration: none;
+              ">
+              {{-- <i class="fa fa-info-circle fa-fw" aria-hidden="true" style="width: 14px"></i> --}}
+              @lang('blog.registration_info')
+            </a>
           </div>
         </div>
         <div class="ft2">

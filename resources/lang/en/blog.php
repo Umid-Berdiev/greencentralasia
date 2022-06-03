@@ -177,4 +177,5 @@ The target group of the Initiative consists of the foreign ministries (and, thro
       'today_users' => 'today\'s visitors',
       'online_users' => 'online visitors',
       'read_on_lexuz' => 'Read on Lex.uz site',
+      'registration_info' => 'Registration information',
     ];

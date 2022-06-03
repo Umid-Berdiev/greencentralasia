@@ -176,4 +176,5 @@ return [
   'today_users' => 'сегодняшние посетители',
   'online_users' => 'онлайн посетители',
   'read_on_lexuz' => 'Читать на сайте Lex.uz',
+  'registration_info' => 'Информация о регистрации',
 ];

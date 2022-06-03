@@ -85,14 +85,6 @@ Route::get('download/{filename}', function ($filename) {
   }
 })->where('filename', '[A-Za-z0-9\-\_\.]+');
 
-#### front ##
-Route::get('/', function () {
-  return redirect("/en");
-});
-
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 ### admin routes
 Route::middleware(['auth'])->prefix('admin')->group(function () {
   Route::get('/', fn () => redirect(route('posts.index')))->name('post');
@@ -231,6 +223,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 });
 ### end admin routes
 
+#### front ##
+Route::get('/', function () {
+  return redirect("/en");
+});
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::post('/vote', [SorovnomaController::class, 'vote'])->name('vote');
 
 Route::group(['prefix' => '{locale}', 'middleware' => ['locale']], function () {
@@ -267,6 +266,9 @@ Route::group(['prefix' => '{locale}', 'middleware' => ['locale']], function () {
   Route::get('/send', [FormController::class, 'index']);
   Route::get('/getsorov', [SearchController::class, 'sorov'])->name('jsonsorov');
   Route::get('/contact', [FormController::class, 'contact']);
+  Route::get('/registration-information', function () {
+    return view('gca.reg_info');
+  });
   Route::get('/video', [VideoController::class, 'ViewVideo']);
   Route::get('/photo', [PhotoController::class, 'ViewPhoto']);
   Route::get('/obuna/delete', [FormController::class, 'deleteObune']);
