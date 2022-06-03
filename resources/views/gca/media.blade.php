@@ -18,7 +18,7 @@
       @foreach($table as $value)
       {{-- @dd($value) --}}
       <div class="col-sm-3 col-4">
-        <a href="{{ URL(App::getLocale()." /photo/".$value->group."/all") }}" class="over">
+        <a href="{{ URL(App::getLocale() . '/photo/' . $value->group . '/all') }}" class="over">
           <img src="{{ asset('/storage/photo-categories/' . $value->cover) }}">
           {{-- <svg width="40" height="36" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
