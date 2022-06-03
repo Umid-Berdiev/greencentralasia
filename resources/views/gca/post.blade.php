@@ -1,13 +1,6 @@
 @extends('gca.layouts.master')
 @section('content')
-{{--@section('main_top_layout')--}}
-{{-- <section class="main_top_layout" style="background-image: url({{asset('project_gca/images/main.jpg')}});">--}}
-  {{-- <div class="container">--}}
-    {{-- <h2>--}}
-      {{-- <span>News & Articles</span>--}}
-      {{-- </h2>--}}
-    {{-- </div>--}}
-  {{-- </section--}} {{--@endsection--}} <section class="inner_all">
+<section class="inner_all">
   <div class="container">
     <div class="bar_inner">
       <div class="bar_inner_left">

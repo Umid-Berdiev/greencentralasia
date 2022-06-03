@@ -224,12 +224,13 @@ class EventController extends Controller
   public function getEvent(Request $request)
   {
     $lang_id = current_language()->id;
+    // dd($lang_id);
 
     if (isset($request->id)) {
       $request->session()->put('event_group', $request->id);
     }
 
-    $group = Event::select('group')->where('id', $request->id)->first()/*      */;
+    $group = Event::select('group')->where('id', $request->id)->first();
     $event = Event::with('category')->where('group', $group->group)->where('language_id', $lang_id)->first();
     $upcoming_events = Event::where('language_id', $lang_id)
       ->whereDate('dateend', '>=', date('Y-m-d'))

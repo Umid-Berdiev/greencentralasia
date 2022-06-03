@@ -5,7 +5,6 @@
   <div class="container">
     <h2>
       <span>@lang('blog.photo')</span>
-
     </h2>
   </div>
 </section>
