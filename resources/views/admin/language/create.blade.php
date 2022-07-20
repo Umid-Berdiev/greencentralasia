@@ -13,7 +13,7 @@
   <div class="table-responsive">
     <div class="card">
       <div class="card-body tab-content">
-        <form class="form-horizontal" role="form" method="post" action="{{ route(" languages.store") }}">
+        <form class="form-horizontal" role="form" method="post" action="{{ route('languages.store') }}">
           @csrf
 
           <div class="form-group">

@@ -19,7 +19,7 @@
         @endforeach
       </ul>
     </div>
-    <form class="form" role="form" enctype="multipart/form-data" method="post" action="{{ route(" photos.store") }}">
+    <form class="form" role="form" enctype="multipart/form-data" method="post" action="{{ route('photos.store') }}">
       @csrf
       <div class="card-body tab-content">
         <div class="form-group floating-label">
