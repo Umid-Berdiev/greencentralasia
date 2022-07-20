@@ -45,6 +45,7 @@ class PhotoCategoryController extends Controller
 
   public function store(Request $request)
   {
+    // dd($request->all());
     $validator = Validator::make($request->all(), [
       'titles.*' => 'required|max:40',
       'descriptions.*' => 'required',
@@ -67,7 +68,7 @@ class PhotoCategoryController extends Controller
       $model->group = $grp_id;
 
       if ($request->hasFile("cover")) {
-        $file = $request->file('photos');
+        $file = $request->file('cover');
         $file_name = 'photo_category_' . time() . '.' . $file->clientExtension();
         $model->cover = $file_name;
         Storage::putFileAs('public/photo-categories', $file, $file_name);
@@ -111,7 +112,7 @@ class PhotoCategoryController extends Controller
       $model->Description = $request->descriptions[$key] ?? null;
 
       if ($request->hasFile("cover")) {
-        $file = $request->file('photos');
+        $file = $request->file('cover');
         $file_name = 'photo_category_' . time() . '.' . $file->clientExtension();
         $model->cover = $file_name;
         Storage::putFileAs('public/photo-categories', $file, $file_name);
